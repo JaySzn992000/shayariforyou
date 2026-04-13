@@ -1,8 +1,16 @@
+import { useNavigate } from "react-router";
 import Navbar from "../headers_footer/navbar";
 import AboutHmImg from "../Slider/AboutHm.jpg";
 import "./AboutHm.css";
 
 const AboutHm = () => {
+
+const navi = useNavigate()
+
+const naviCollection = () => {
+navi('/collections')
+}
+
 
 return (
 
@@ -31,7 +39,7 @@ makeup, and fragrance essentials designed to enhance your natural beauty
 and boost your confidence every day{" "}
 </p>
 
-<button><span>DISCOVER NOW</span></button>
+<button onClick={naviCollection}><span>DISCOVER NOW</span></button>
 
 </section>
 

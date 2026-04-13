@@ -4,6 +4,7 @@ import img3 from './Slider/2.img.jpg';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './slider.css';
+import { useNavigate } from "react-router";
 
 const SliderComponent = () => {
 
@@ -17,6 +18,14 @@ autoplay: true,
 autoplaySpeed: 3000,
 arrows: true,
 };
+
+
+const navi = useNavigate()
+
+const naviColleciton = () => {
+navi('/collections')
+}
+
 
 return (
 
@@ -34,7 +43,7 @@ return (
 <p className="banner_subtitle">
 Enhance your productivity with intelligently designed work desks.
 </p>
-<button className="banner_btn">Explore Collection →</button>
+<button onClick={naviColleciton} className="banner_btn">Explore Collection →</button>
 </div>
 </div>
 
@@ -46,7 +55,7 @@ Enhance your productivity with intelligently designed work desks.
 <p className="banner_subtitle">
 Ergonomic design that adapts to your natural movements.
 </p>
-<button className="banner_btn">Shop Now →</button>
+<button onClick={naviColleciton} className="banner_btn">Shop Now →</button>
 </div>
 </div>
 </Slider>

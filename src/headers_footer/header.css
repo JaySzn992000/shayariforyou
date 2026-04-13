@@ -14,6 +14,17 @@ padding-bottom: 127px;
 width: 100%;
 }
 
+.div_header .newsletter {
+padding: 13px;
+padding-left: 13px;
+border-radius: 5px;
+border: 0.5px solid #DCDCDC;
+outline: none;
+background-color: #231F20;
+margin-top: 1.3em;
+font-size: .9rem;
+}
+
 .normal_header .exclusive_flx {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(113px, max-content));

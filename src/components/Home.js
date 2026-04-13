@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import Navbar from "../headers_footer/navbar";
 import Header from "../headers_footer/header";
 import Slider from "../slider";
-import { Helmet } from "react-helmet";
 import emailjs from "emailjs-com";
 import "./ProductListmodule.css";
 import "./Home.css";
@@ -89,6 +88,7 @@ return (
 <div>
 
 <Topnav></Topnav>
+
 <Navbar />
 
 <Slider />

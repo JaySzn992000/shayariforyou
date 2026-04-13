@@ -1,9 +1,16 @@
+import { useNavigate } from "react-router";
 import Navbar from "../headers_footer/navbar";
 import BiotiqueFavroute from "../Slider/biotique1.png";
 import BiotiqueFavrouteTwo from "../Slider/biotique2.png";
 import "./FavFavroute.css";
 
 const FavFavroute = () => {
+
+const navi = useNavigate()
+
+const naviCollections = () => {
+navi('/collections')
+}
 
 return (
 
@@ -21,7 +28,7 @@ loading="lazy"
 className="imgAbout" 
 alt=""
 src={BiotiqueFavroute}></img>
-<button><span>EXPLORE NOW</span></button>
+<button onClick={naviCollections} ><span>EXPLORE NOW</span></button>
 </section>
 
 <section>
@@ -31,7 +38,7 @@ loading="lazy"
 className="imgAbout" 
 alt=""
 ></img>
-<button><span>EXPLORE NOW</span></button>
+<button onClick={naviCollections} ><span>EXPLORE NOW</span></button>
 </section>
 </div>
 
