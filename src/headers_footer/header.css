@@ -16,13 +16,15 @@ width: 100%;
 
 .div_header .newsletter {
 padding: 13px;
-padding-left: 13px;
+padding-left: 15px;
+padding-right: 57px;
 border-radius: 5px;
-border: 0.5px solid #DCDCDC;
+border: 0.5px solid rgba(255, 255, 255, 0.2);
 outline: none;
+color: #fff;
 background-color: #231F20;
 margin-top: 1.3em;
-font-size: .9rem;
+font-size: 1rem;
 }
 
 .normal_header .exclusive_flx {
@@ -88,8 +90,8 @@ color: #fff;
 .div_header button {
 background-color: #fff;
 border: 2px solid transparent;
-padding: .8em 2.8em;
-font-size: .9rem;
+padding: .9em 2.8em;
+font-size: .95rem;
 margin-top: 1.7em;
 cursor: pointer;
 position: relative;
