@@ -14,7 +14,7 @@ useEffect(() => {
 const DbFetch = async () => {
 try {
 
-const response = await fetch("https://naturalbuti.onrender.com/usersDetails");
+const response = await fetch("https://omega-zg6z.onrender.com/usersDetails");
 
 const data = await response.json();
 
@@ -59,8 +59,7 @@ return (
 <DashboardNav
 toggleSidebar={toggleSidebar}
 sidebarOpen={sidebarOpen}
-navContainer={navContainer}
->
+navContainer={navContainer} >
 
 {" "}
 
@@ -77,12 +76,7 @@ RelativeDB_PRQuery ? "RelativeDB_PRQuery-inside" : ""
 <div
 className={`DB_products_ ${
 DB_products_PRQuery ? "DB_products_PRQuery-inside" : ""
-}`}
->
-<div className="Flx_DBProducts">
-<h2>Registered Users : {totalProducts}
-</h2>
-</div>
+}`} >
 
 <div className="table-wrapper">
 <table className="product-table">
@@ -117,8 +111,7 @@ style={{color : 'black'}}>
 # {DisDb.email}
 </td>
 
-<td
-style={{
+<td style={{
 backgroundColor: bgColor,
 color: "#000",
 borderRadius: "5px",
@@ -127,6 +120,7 @@ paddingTop : '7px',
 display: "inline-block",
 textAlign: "start"
 }}
+
  className="Userpass">
 {DisDb.password}
 </td>

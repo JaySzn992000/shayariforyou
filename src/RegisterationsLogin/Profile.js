@@ -38,11 +38,12 @@ const navigateToWishlist = () => {
 navigate("/WishList");
 };
 
+
 return (
 
 <div>
 
-<Navbar />
+<Navbar/>
 
 <section className="flex_Profile_">
 

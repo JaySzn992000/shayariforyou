@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import AddProductImg from "./Images_ToolsSymbols/addProduct.jpg";
 import "./AddProducts.css";
 
-
 function AddProducts({ Product_relativeCon, dashboard_containerCon }) {
 
 const [productCategory, setProductCategory] = useState("");
@@ -16,7 +15,6 @@ const [productImageOne, setProductImageOne] = useState(null);
 const [productImageTwo, setProductImageTwo] = useState(null);
 const [productImageThree, setProductImageThree] = useState(null);
 const [productSizes, setProductSizes] = useState("");
-
 
 const handleImageChange = (event) => setProductImage(event.target.files[0]);
 const handleImageChangeOne = (event) =>
@@ -55,7 +53,6 @@ method: "POST",
 body: formData,
 });
 
-
 if (response.ok) {
 alert("Product added successfully!");
 
@@ -71,7 +68,6 @@ setProductImageTwo(null);
 setProductImageThree(null);
 setProductSizes("");
 
-
 document.getElementById("file-upload").value = "";
 document.getElementById("file-upload-one").value = "";
 document.getElementById("file-upload-two").value = "";
@@ -86,7 +82,6 @@ alert("Error uploading product!");
 }
 };
 
-
 return (
 
 <div>
@@ -94,14 +89,12 @@ return (
 <div
 className={`Product_relative ${
 Product_relativeCon ? "Product_relativeConinside" : ""
-}`}
->
+}`} >
 ``
 <div
 className={`dashboard-container ${
 dashboard_containerCon ? "dashboard-containerConinside" : ""
-}`}
->
+}`} >
 
 <section>
 
@@ -109,81 +102,71 @@ dashboard_containerCon ? "dashboard-containerConinside" : ""
 
 className="addProduct_form">
 
-
 <div className="Flx_IconPrct">
 <img  className="IconUpdatePrdct"
 src="https://cdn-icons-png.flaticon.com/128/5444/5444684.png"></img>
-<h3 id="addTag">ADD PRODUCTS</h3>
+<h3 id="addTag">Add Inventory</h3>
 </div>
-
 
 <section>
 
+<section className="flex_section">
 <div className="addProductDiv">
-
-<label>Product Name:</label>
-
+<label>Category Name</label>
 <input
 type="text"
 value={productCategory}
 onChange={(e) => setProductCategory(e.target.value)}
 required
 placeholder="Category Name"
-maxLength={30}
-/>
+maxLength={30} />
+</div>
 
-<label>Product Sizes:</label>
-
+<div className="addProductDiv">
+<label>Sizes</label>
 <input
 type="text"
 value={productSizes}
 onChange={(e) => setProductSizes(e.target.value)}
 required
-placeholder="Product Sizes"
-/>
+placeholder="Product Sizes" />
 </div>
+</section>
 
+{/* 2nd Section */}
 
+<section className="flex_section">
 <div className="addProductDiv">
-
 <label>Product Name:</label>
-
 <input
 type="text"
 value={productName}
 onChange={(e) => setProductName(e.target.value)}
 required
 placeholder="Product Name"
-maxLength={50}
-/>
+maxLength={50} />
+</div>
 
-<label>Product Price:</label>
-
+<div className="addProductDiv">
+<label>Price</label>
 <input
 type="number"
 value={productPrice}
-
 onChange={(e) => {
 if (e.target.value.length <= 5) {
 setProductPrice(e.target.value);
 }
-
 }}
-
 required
-placeholder="Price"
-
-/>
-
+placeholder="Price" />
 </div>
+</section>
 
+{/* 3rd section */}
 
-{/*  */}
-
+<section className="flex_section">
 <div className="addProductDiv">
-
-<label>Stock:</label>
-
+<label>Stock</label>
 <input
 type="number"
 value={productStock}
@@ -193,27 +176,25 @@ onChange={(e) => {
 if (e.target.value.length <= 4) {
 setProductStock(e.target.value);
 }
-}}
-/>
+}} />
+</div>
 
-<label>Rate Product:</label>
-
+<div className="addProductDiv">
+<label>Review</label>
 <input
 type="text"
 value={RateProducts}
 onChange={(e) => setRateProducts(e.target.value)}
 required
 placeholder="Rate Product"
-maxLength={10}
-/>
-
+maxLength={10} />
 </div>
+</section>
 
+{/* 4th section */}
 
-{/*  */}
-
-<label>Description:</label>
-
+<section>
+<label>Description</label>
 <textarea
 className="textArea_Add"
 type="text"
@@ -221,9 +202,8 @@ value={productDescription}
 onChange={(e) => setProductDescription(e.target.value)}
 required
 placeholder="Description"
-maxLength={1500}
-/>
-
+maxLength={1500} />
+</section>
 
 <input
 style={{ display: "none" }}
@@ -231,8 +211,7 @@ type="file"
 name="image"
 onChange={handleImageChange}
 required
-id="file-upload"
-/>
+id="file-upload" />
 
 <input
 style={{ display: "none" }}
@@ -240,8 +219,7 @@ type="file"
 name="imageone"
 onChange={handleImageChangeOne}
 required
-id="file-upload-one"
-/>
+id="file-upload-one" />
 
 <input
 style={{ display: "none" }}
@@ -249,8 +227,7 @@ type="file"
 name="imagetwo"
 onChange={handleImageChangeTwo}
 required
-id="file-upload-two"
-/>
+id="file-upload-two" />
 
 <input
 style={{ display: "none" }}
@@ -258,18 +235,13 @@ type="file"
 name="imagethree"
 onChange={handleImageChangeThree}
 required
-id="file-upload-three"
-/>
-<br></br>
-
+id="file-upload-three" />
 
 <button className="btn_product" type="submit">
 Add Product
 </button>
 
 </section>
-
-<img className="ImgAddPdct" src={AddProductImg}></img>
 
 </form>
 
@@ -285,8 +257,8 @@ type="button"
 className="browse-btn"
 onClick={() =>
 document.getElementById("file-upload").click()
-}
->
+}>
+
 <img src="https://cdn-icons-png.flaticon.com/128/17112/17112563.png"></img>
 <h4 className="up_ph4">Main Upload Photo</h4>
 <h3>
@@ -306,8 +278,8 @@ type="button"
 className="browse-btn"
 onClick={() =>
 document.getElementById("file-upload-one").click()
-}
->
+} >
+
 <p>Upload Photo 2</p>
 </button>
 
@@ -316,8 +288,8 @@ type="button"
 className="browse-btn"
 onClick={() =>
 document.getElementById("file-upload-two").click()
-}
->
+} >
+
 <p>Upload Photo 3</p>
 </button>
 
@@ -326,8 +298,8 @@ type="button"
 className="browse-btn"
 onClick={() =>
 document.getElementById("file-upload-three").click()
-}
->
+} >
+
 <p>Upload Photo 4</p>
 </button>
 </div>

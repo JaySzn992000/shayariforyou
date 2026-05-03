@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import "./DashboardSlider.css";
 
-
 function DashboardSlider({ sidebarOpen }) {
 
 const navigate = useNavigate();
@@ -27,18 +26,15 @@ const pdmanagmenthandler = () => {
 naviManagmentProduct("/Productmanagment");
 };
 
-
 const naviAdmin = useNavigate()
 const adminNavi = () => {
 naviAdmin('/AdminUsers')
 }
 
-
 const NaviUsers = useNavigate()
 const userNavi = () => {
 NaviUsers('/UsersDetails')
 }
-
 
 const adminProfileNavi = useNavigate()
 const adminProfile = () => {
@@ -51,8 +47,7 @@ return (
 <div>
 
 <div
-className={`slider_Dash ${sidebarOpen ? "slider-in" : "slider-out"}`}
->
+className={`slider_Dash ${sidebarOpen ? "slider-in" : "slider-out"}`} >
 
 <img
 className="Img_DashLogo"
@@ -61,64 +56,58 @@ loading="lazy"
 src="https://cdn-icons-png.flaticon.com/128/1828/1828673.png"
 ></img>
 
-
 <div>
 <li onClick={adminProfile}>APPS</li>
 </div>
 
 <section>
 <div>
-<i className="fa fa-tachometer"></i>
+<img src="https://cdn-icons-png.flaticon.com/128/1828/1828765.png"></img>
 <li onClick={navigateSlider}>Dashboard</li>
 <i className="fa fa-angle-down"></i>
 </div>
 
 <div>
-<i class="fa-brands fa-product-hunt"></i>
+<img src="https://cdn-icons-png.flaticon.com/128/1007/1007988.png"></img>
 <li onClick={Productshandler}>Products</li>
 <i className="fa fa-angle-down"></i>
 </div>
 
 <div>
-<i className="fa fa-list-alt"></i>
-<li className="prodctMngmt" onClick={pdmanagmenthandler}>Product Management</li>
+<img src="https://cdn-icons-png.flaticon.com/128/10485/10485973.png"></img>
+<li className="prodctMngmt" onClick={pdmanagmenthandler}>Manage Products</li>
 <i className="fa fa-angle-down"></i>
 </div>
 
 <div>
-<i class="fa-solid fa-bag-shopping"></i>
+<img src="https://cdn-icons-png.flaticon.com/128/1008/1008010.png"></img>
 <li onClick={orderNavi}>Orders</li>
 <i className="fa fa-angle-down"></i>
 </div>
 
-
 <div style={{lineHeight : '2.1em'}}>
-<li onClick={adminProfile}>Profile & Data Protection</li>
+<li onClick={adminProfile}>Profile & Data</li>
 </div>
 
-
 <div>
-<i className="fa fa-user"></i>
-<li onClick={adminProfile}>My Profile</li>
+<img src="https://cdn-icons-png.flaticon.com/128/15491/15491621.png"></img>
+<li onClick={adminProfile}>Profile</li>
 <i className="fa fa-angle-down"></i>
 </div>
 
-
 <div>
-<i class="fas fa-database"></i>
+<img src="https://cdn-icons-png.flaticon.com/128/9542/9542653.png"></img>
 <li onClick={adminNavi}>Admin Data</li>
 <i className="fa fa-angle-down"></i>
 </div>
 
 <div>
-<i class="fas fa-shield"></i>  
+<img src="https://cdn-icons-png.flaticon.com/128/4548/4548410.png"></img>
 <li onClick={userNavi}>User Data</li>
 <i className="fa fa-angle-down"></i>
 </div>
 
 </section>
-
-{/*  */}
 
 <section></section>
 

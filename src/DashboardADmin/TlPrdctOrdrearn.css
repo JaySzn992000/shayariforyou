@@ -1,9 +1,7 @@
-/* Done */
 
 #PieChrt{
 margin-top: 3.7em;
 }
-
 
 .ChartsTg {
 margin: 1.7em 0em 1.3em 0em;
@@ -15,17 +13,29 @@ background-color: #ffffff;
 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 cursor: pointer;
 margin-top: 3.7em;
+padding: 13px;
 margin-right: 1.3em;
 }
-
 
 .linechart-container {
 background-color: #ffffff;
 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 margin-right: 1.3em;
 cursor: pointer;
+padding: 13px;
 }
 
+.linechart-container label{
+font-weight: normal;
+}
+
+.PieChart-container label {
+font-weight: normal;
+}
+
+.chart-container label {
+font-weight: normal;
+}
 
 .PieChart-container{
 background-color: #ffffff;
@@ -33,14 +43,13 @@ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 margin-right: 1.3em;
 cursor: pointer;
 height: 497px;
+padding: 13px;
 margin-top: 3.7em;
 }
-
 
 .Dashboard_continer {
 margin-top: 5.3em;
 }
-
 
 .filter-container {
 display: flex;
@@ -51,21 +60,18 @@ max-width: 500px;
 margin-top: 1.7em;
 }
 
-
 .filter-container label {
-font-weight: 600;
+font-weight: 0;
 color: #333;
 font-size: 1rem;
-margin-left: -.9em;
+margin-left: -1.7em;
 }
-
 
 .filter-container input[type="date"] {
 padding: 0.5rem;
 border: 1px solid #ccc;
 border-radius: 4px;
 }
-
 
 .filter-container button {
 padding: 13px;
@@ -77,20 +83,15 @@ border-radius: 4px;
 cursor: pointer;
 }
 
-
 .filter-container button:hover {
 background-color: #0056b3;
 }
-
-
-/*  */
 
 .tagh3{
 margin-top: -2.7em;
 margin-right: -6.7em;
 font-size: 1.3rem;
 }
-
 
 .Parent_relative {
 display: flex;
@@ -106,7 +107,6 @@ transition: 0.5s;
 cursor: pointer;
 }
 
-
 .Parent_relative .all_div {
 display: flex;
 align-items: center;
@@ -120,15 +120,9 @@ border-radius: 7px;
 transition: 0.5s;
 }
 
-
 .Parent_relative .DashContainer-inside {
 width: 23%;
 }
-
-
-/* Duplicate 
-for Chart's */
-
 
 .Parent_relativeChart {
 display: flex;
@@ -142,7 +136,6 @@ transition: 0.5s;
 overflow: hidden;
 }
 
-
 .Parent_relativeChart .ChartParentContainer-inside {
 display: flex;
 justify-content: end;
@@ -154,25 +147,17 @@ gap: 1.3em;
 transition: 0.5s;
 }
 
-
 .Parent_relativeChart .all_divChart {
 width: 80%;
 }
-
 
 .Parent_relativeChart .ChartContainer-inside {
 width: 98%;
 }
 
-
-
-/*  */
-
-
 .Parent_relative .div_total_customer {
 background-color: #4169E1;
 }
-
 
 .Parent_relative .div_earning {
 background-color: #bc8f8f;
@@ -192,12 +177,11 @@ color: #FFFFFF;
 text-align: start;
 }
 
-
 .Parent_relative div img {
-width: 51px;
+width: 47px;
 border-radius: 17px;
+filter: invert(1);
 }
-
 
 .filter-container {
 margin-left: .9em;
@@ -226,7 +210,6 @@ height: 537px;
 margin-left: 2.5vw;
 }
 
-
 .Parent_relative {
 display: grid;
 grid-template-columns: repeat(1, 1fr);
@@ -247,11 +230,9 @@ font-size: 1.3rem;
 width: 100%;
 }
 
-
 .Parent_relativeChart .ChartContainer-inside {
 width: 100%;
 }
-
 
 .filter-container {
 flex-direction: column;
@@ -261,7 +242,6 @@ flex-direction: column;
 line-height: 1.17em;
 font-size: 1.3rem;
 }
-
 
 .ChartsTg {
 line-height: 1.7em;
@@ -274,39 +254,29 @@ margin-bottom: 2.7em;
 }
 
 
-
-
-/* for Filter ..  */
-
-
 @media (max-width: 768px) {
 
 .Dashboard_continer {
-text-align: start;
 margin-bottom: 2.3em;
 }
-
 
 .Dashboard_continer h2 {
 font-size: 1.4rem;
 text-align: start;
-margin-left: .5em;
+margin-left: .7em;
 }   
-
 
 .filter-container {
 flex-direction: column;
 align-items: flex-start;
-margin-left: .9em;
-}
-
-
-.filter-container label {
-font-weight: 600;
-color: #333;
 margin-left: 0em;
 }
 
+.filter-container label {
+font-weight: normal;
+color: #333;
+margin-left: 0em;
+}
 
 .filter-container button {
 margin-top: .8em;
@@ -326,7 +296,6 @@ grid-template-columns: repeat(2, 1fr);
 width: 100%;
 }
 
-
 .Parent_relativeChart .all_divChart {
 width: 100%;
 }
@@ -342,7 +311,6 @@ margin-left: .3em;
 position: absolute;
 }
 
-
 .filter-container {
 flex-direction: column;
 }
@@ -353,10 +321,9 @@ flex-direction: column;
 
 @media (min-width: 769px) and (max-width: 992px) {
 
-
 .Dashboard_continer h2 {
 text-align: start;
-}  
+} 
 
 .Parent_relative {
 position: relative;
@@ -397,7 +364,6 @@ margin-left: 1.7em;
 position: absolute;
 }
 
-
 .Parent_relativeChart .ChartParentContainer-inside {
 display: flex;
 justify-content: end;
@@ -407,19 +373,17 @@ width: 100%;
 gap: 1.3em;
 }
 
-
 .Parent_relativeChart .all_divChart {
 width: 61%;
 }
-
 
 .Parent_relativeChart .ChartContainer-inside {
 width: 98%;
 }
 
 
-
 }
+
 
 @media (min-width: 992px) and (max-width: 1245px) {
 
@@ -431,13 +395,13 @@ margin-bottom: 2.3em;
 .Dashboard_continer h2 {
 font-size: 1.4rem;
 text-align: start;
-margin-left: .7em;
+margin-left: 2vw;
 }   
 
 .filter-container label {
-font-weight: 600;
+font-weight: normal;
 color: #333;
-margin-left: -1.5vw;
+margin-left: -2.2vw;
 }
 
 .Parent_relative {
@@ -447,7 +411,7 @@ gap: 0.5em;
 grid-template-columns: repeat(4, minmax(0px, 1fr));
 max-width: 72.5%;
 margin-right: 1.5vw;
-margin-left: 25.5vw;
+margin-left: 26vw;
 }
 
 .Parent_relative.DashParentContainer-inside {
@@ -460,13 +424,9 @@ width: 100%;
 margin-left: 2.7vw;
 }
 
-
 .filter-container {
 margin-left: 3vw;
 }
-
-
-/*  */
 
 .Parent_relativeChart .ChartParentContainer-inside {
 display: flex;
@@ -477,18 +437,13 @@ width: 100%;
 gap: 1.3em;
 }
 
-
 .Parent_relativeChart .all_divChart {
 width: 72%;
 }
 
-
 .Parent_relativeChart .ChartContainer-inside {
 width: 98%;
 }
-
-
-/*  */
 
 .Parent_relative .all_div h4 {
 line-height: 1.5em;
@@ -518,37 +473,31 @@ margin-left: 1.5vw;
 margin-left: 1.5vw;
 }
 
-
 }
 
 
 
 @media (min-width: 1245px) and (max-width: 1519px) {
 
-    
 .Dashboard_continer {
 text-align: start;
 margin-bottom: 2.3em;
 }
 
-
 .Dashboard_continer h2 {
 font-size: 1.4rem;
 text-align: start;
-margin-left: 0em;
-}   
-
+margin-left: 2vw;
+} 
 
 .filter-container {
-margin-left: 2.1vw;
+margin-left: 3vw;
 }
 
 .filter-container label {
-font-weight: 600;
 color: #333;
 margin-left: -2.1vw;
 }
-
 
 .Parent_relative {
 position: relative;
@@ -557,7 +506,7 @@ display: grid;
 gap: 0.5em;
 grid-template-columns: repeat(4, 1fr);
 max-width: 75%;
-margin-left: 22vw;
+margin-left: 24vw;
 }
 
 .Parent_relative.DashParentContainer-inside {
@@ -570,11 +519,9 @@ width: 100%;
 margin-left: .3vw;
 }
 
-
 .Parent_relative div img {
 width: 51px;
 }
-
 
 .tagh3{
 margin-top: -1.7em;
@@ -582,7 +529,6 @@ margin-right: 0em;
 margin-left: 1.7em;
 position: absolute;
 }
-
 
 .Parent_relativeChart .ChartParentContainer-inside {
 display: flex;
@@ -593,15 +539,12 @@ width: 100%;
 gap: 1.3em;
 }
 
-
 .Parent_relativeChart .all_divChart {
 width: 77%;
 }
 
-
 .Parent_relativeChart .ChartContainer-inside {
 width: 98%;
 }
-
 
 }

@@ -36,11 +36,8 @@ data: [],
 useEffect(() => {
 const customerFetch = async () => {
 try {
-const response = await fetch("https://naturalbuti.onrender.com/fetchCutomerOrder");
+const response = await fetch("https://omega-zg6z.onrender.com/fetchCutomerOrder");
 const data = await response.json();
-
-// Month-wise 
-// earnings calculate 
 
 const earningsByMonth = data.products.reduce((acc, item) => {
 
@@ -85,7 +82,7 @@ data: formattedData.map((item) => item.total),
 },
 ],
 }));
-  
+
 } catch (error) {
 console.error("Error fetching data:", error);
 }

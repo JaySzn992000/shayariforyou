@@ -1,16 +1,14 @@
-/* Done */
 
 .dashboard-nav {
 position: fixed;
 width: 100%;
-padding: 7px;
+padding: 17px;
 top: 0;
 box-shadow: 0 4px 6px rgba(10, 8, 8, 0.052);
 color: #FFFFFF;
 background-color: #FFFFFF;
 z-index: 999;
 }
-
 
 .nav_insidenav {
 display: flex;
@@ -23,17 +21,14 @@ margin-left: 297px;
 transition: 0.3s;
 }
 
-
 .navContainer-inside {
 width: calc(100% - 0px);
 margin-left: 0px;
 }
 
-
 .nav_insidenav .liDashboard {
 margin-left: -.2em;
 }
-
 
 .nav_insidenav section div {
 display: flex;
@@ -41,17 +36,14 @@ align-items: center;
 gap: 1.3em;
 }
 
-
 .dashboard-nav section img {
-width: 29px;
+width: 26px;
 cursor: pointer;
 }
-
 
 .nav_insidenav .dashboard_firstContainer .fa-bars {
 margin-right: 0.7em;
 cursor: pointer;
-filter: invert(0);
 }
 
 
@@ -73,11 +65,7 @@ display: none;
 }
 
 
-/*  */
-
-
 @media (min-width: 769px) and (max-width: 992px) {
-
 
 .nav_insidenav {
 display: flex;
@@ -92,6 +80,7 @@ padding-left: 21px;
 width: calc(100% - 0px);
 margin-left: 0px;
 }
+
 }
 
 
@@ -110,6 +99,7 @@ padding-left: 21px;
 width: calc(100% - 0px);
 margin-left: 0px;
 }
+
 }
 
 

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import DashboardNav from "./DashboardNav";
 import DashboardSlider from "./DashboardSlider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "./AdminProfile.css"; 
+import DashboardNav from "./DashboardNav";
 import { useNavigate } from "react-router";
-
+import "./AdminProfile.css"; 
 
 function AdminProfile() {
 
@@ -43,7 +42,6 @@ setRelativeClass(!relativeClass);
 setProductClass(!productClass);
 };
 
-
 const naviupdateProfile = useNavigate()
 const updateProfile = () => {
 naviupdateProfile('/Adminupdate')
@@ -65,8 +63,7 @@ return (
 <DashboardNav
 toggleSidebar={toggleSidebar}
 sidebarOpen={sidebarOpen}
-navContainer={navContainer}
-/>
+navContainer={navContainer} />
 
 <DashboardSlider sidebarOpen={sidebarOpen} />
 
@@ -103,26 +100,18 @@ navContainer={navContainer}
 
 </div>
 
-{/*  */}
-
 <div className="flx_adminPr">
-<i onClick={logoutHandler}
-className="fa fa-edit"></i> 
+{/* <i onClick={logoutHandler} className="fa fa-edit"></i>  */}
 <li style={{cursor : 'pointer'}} onClick={updateProfile}>Edit Profile</li>
 </div>
 
 <div onClick={logoutHandler}
 className="flx_adminPr">
-<i
-className="fa fa-sign-out"></i> 
+{/* <i className="fa fa-sign-out"></i>  */}
 <li>Sign Out</li>
 </div>
 
-{/*  */}
-
 </div>
-
-{/*  */}
 
 </div>
 </div>
@@ -130,6 +119,7 @@ className="fa fa-sign-out"></i>
 </div>
 
 );
+
 }
 
 export default AdminProfile;

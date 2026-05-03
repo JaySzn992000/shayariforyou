@@ -10,7 +10,6 @@ import BarChart from "./BarChart";
 import PieChart from "./PieChart";
 import "./TlPrdctOrdrearn.css";
 
-
 function TlPrdctOrdrearn() {
 
 const [totalcustProducts, setTotalcustProducts] = useState(0);
@@ -23,8 +22,7 @@ const [customerOrder, setCustomerOrder] = useState([]);
 useEffect(() => {
 const DbFetch = async () => {
 try {
-// http://localhost:3001    
-const response = await fetch("https://naturalbuti.onrender.com/fetchDB");
+const response = await fetch("https://omega-zg6z.onrender.com/fetchDB");
 const data = await response.json();
 setStoreDB(data.products);
 setTotalProducts(data.total);
@@ -37,11 +35,10 @@ console.error("Error message:", error);
 DbFetch();
 }, [] );
 
-
 useEffect(() => {
 const customerFetch = async () => {
 try {
-const response = await fetch("https://naturalbuti.onrender.com/fetchCutomerOrder");
+const response = await fetch("https://omega-zg6z.onrender.com/fetchCutomerOrder");
 const data = await response.json();
 setCustomerOrder(data.products);
 setTotalcustProducts(data.total);
@@ -58,11 +55,10 @@ console.error("Error message:", error);
 customerFetch();
 }, [] );
 
-
 useEffect(() => {
 const fetchTotalUsers = async () => {
 try {
-const response = await fetch("https://naturalbuti.onrender.com/usertotalnofo");
+const response = await fetch("https://omega-zg6z.onrender.com/usertotalnofo");
 const data = await response.json();
 setTotalUsers(data.total);
 } catch (error) {
@@ -73,17 +69,13 @@ console.error("Error message:", error);
 fetchTotalUsers();
 }, [] );
 
-
 const [sidebarOpen, setSidebarOpen] = useState(true);
 const [navContainer, setnavContainer] = useState(false);
 const [DashParentContainer, setDashParentContainer] = useState(false);
 const [Dashcontainer, setDashcontainer] = useState(false);
 
-// 
-
 const [ChartParentContainer, setChartParentContainer] = useState(false);
 const [ChartContainer, setChartContainer] = useState(false);
-
 
 const toggleSidebar = () => {
 
@@ -93,18 +85,13 @@ setDashParentContainer((prevState) => !prevState);
 setDashcontainer((prevState) => !prevState);
 setChartParentContainer((prevState) => !prevState); 
 setChartContainer((prevState) => !prevState);
-
 };
 
-
-
-
 const [selectedDate, setSelectedDate] = useState("");
-
 const handleFilterSubmit = async () => {
 
 try {
-const response = await fetch("https://naturalbuti.onrender.com/fetchCutomerOrder", {
+const response = await fetch("https://omega-zg6z.onrender.com/fetchCutomerOrder", {
 method: "POST",
 headers: { "Content-Type": "application/json" },
 body: JSON.stringify({ date: selectedDate }),
@@ -120,7 +107,6 @@ console.error("Error fetching filtered data:", error);
 
 };
 
-
 return (
 
 <div>
@@ -130,23 +116,18 @@ toggleSidebar={toggleSidebar}
 sidebarOpen={sidebarOpen}
 navContainer={navContainer}
 ></DashboardNav>
+
 <DashboardSlider sidebarOpen={sidebarOpen} />
-
-{/* for Date 
-Filter */}
-
 
 <div
 className={`Parent_relativeChart ${
 ChartParentContainer ? "ChartParentContainer-inside" : ""
-}`}
->
+}`} >
 
 <div
 className={`div_total_customerChart all_divChart ${
 ChartContainer ? "ChartContainer-inside" : ""
-}`}
->
+}`} >
 
 <section className="Dashboard_continer">
 <h2>Dashboard</h2>
@@ -161,23 +142,15 @@ ChartContainer ? "ChartContainer-inside" : ""
 
 </div>
 
-{/* for Date 
-Filter */}
-
-
-{/*  */}
-
 <div
 className={`Parent_relative ${
 DashParentContainer ? "DashParentContainer-inside" : ""
-}`}
->
+}`} >
 
 <div
 className={`div_total_customer all_div ${
 Dashcontainer ? "DashContainer-inside" : ""
-}`}
->
+}`} >
 
 <img 
 src={OrdersDashImg} loading="lazy" alt=""/>
@@ -190,8 +163,7 @@ src={OrdersDashImg} loading="lazy" alt=""/>
 <div
 className={`div_earning all_div ${
 Dashcontainer ? "DashContainer-inside" : ""
-}`}
->
+}`} >
 
 <img src={OrdersDashEarn} loading="lazy" alt="Orders Dashboard" />
 <div>
@@ -204,8 +176,7 @@ Dashcontainer ? "DashContainer-inside" : ""
 <div
 className={`div_amounts all_div ${
 Dashcontainer ? "DashContainer-inside" : ""
-}`}
->
+}`} >
 
 <img src={OrdersDashOrdr} loading="lazy" alt="Orders Dashboard" />
 <div>
@@ -217,8 +188,7 @@ Dashcontainer ? "DashContainer-inside" : ""
 <div
 className={`div_users all_div ${
 Dashcontainer ? "DashContainer-inside" : ""
-}`}
->
+}`} >
 
 <img src={OrdersDashUsr} loading="lazy" alt="Orders Dashboard" />
 <div>
@@ -229,20 +199,15 @@ Dashcontainer ? "DashContainer-inside" : ""
 </div>
 </div>
 
-{/* Duplicate 
-Container */}
-
 <div
 className={`Parent_relativeChart ${
 ChartParentContainer ? "ChartParentContainer-inside" : ""
-}`}
->
+}`} >
 
 <div
 className={`div_total_customerChart all_divChart ${
 ChartContainer ? "ChartContainer-inside" : ""
-}`}
->
+}`} >
 
 <LineChart width="100%"></LineChart>
 <BarChart></BarChart>

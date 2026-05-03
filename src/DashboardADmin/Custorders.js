@@ -1,25 +1,20 @@
 import React, { useEffect, useState } from "react";
 import DashboardNav from "../DashboardNav";
 import DashboardSlider from "../DashboardSlider";
-import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router";
-import "./Custorders.css";
+import "./Custorders.css"
 
 function Custorders() {
 
 const [customerOrder, setcustomerOrder] = useState([]);
 const [totalcustProducts, settotalcustProducts] = useState(0);
 const [selectedDate, setSelectedDate] = useState('');
-
 const [allCustomerOrders, setAllCustomerOrders] = useState([]);
-
 
 useEffect(() => {
 const customerFetch = async () => {
 try {
-    // http://192.168.1.4:3000
-    // https://naturalbuti.onrender.com/fetchCutomerOrder
-const response = await fetch("https://naturalbuti.onrender.com/fetchCutomerOrder");
+const response = await fetch("https://omega-zg6z.onrender.com/fetchCutomerOrder");
 const data = await response.json();
 setAllCustomerOrders(data.products);
 setcustomerOrder(data.products);
@@ -29,13 +24,12 @@ console.error("Error message:", error);
 }
 };
 
-customerFetch();
-}, [] );
+customerFetch ();
 
+}, [] );
 
 const [sidebarOpen, setSidebarOpen] = useState(true);
 const [navContainer, setnavContainer] = useState(false);
-
 const [relative_CustordersCon, setrelative_CustordersCon] = useState(false);
 
 const toggleSidebar = () => {
@@ -44,23 +38,18 @@ setnavContainer((prevState) => !prevState);
 setrelative_CustordersCon((prevState) => !prevState);
 };
 
-
 const navigate = useNavigate();
 
 useEffect(() => {
 const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-
 if (!isLoggedIn) {
 navigate("/adminlogin");
 }
-}, [navigate] );
-
+}, [navigate]);
 
 const customerFetch = async () => {
-
 try {
-
-const response = await fetch("https://naturalbuti.onrender.com/fetchCutomerOrder");
+const response = await fetch("https://omega-zg6z.onrender.com/fetchCutomerOrder");
 const data = await response.json();
 setcustomerOrder(data.products);
 settotalcustProducts(data.total);
@@ -71,22 +60,17 @@ console.error("Error message:", error);
 
 useEffect(() => {
 customerFetch();
-
-}, [] );
-  
+}, []);
 
 const handleFilterSubmit = () => {
-
 if (!selectedDate) {
 customerFetch();
 return;
 }
 
-
 const filteredOrders = allCustomerOrders.filter((order) => {
 const orderDate = new Date(order.date);
 const filterDate = new Date(selectedDate);
-
 return (
 orderDate.getFullYear() === filterDate.getFullYear() &&
 orderDate.getMonth() === filterDate.getMonth() &&
@@ -98,23 +82,17 @@ setcustomerOrder(filteredOrders);
 settotalcustProducts(filteredOrders.length);
 };
 
-
 const formatDate = (isoDate) => {
 const date = new Date(isoDate);
-const month = date.getMonth() + 1; 
+const month = date.getMonth() + 1;
 const day = date.getDate();
 const year = date.getFullYear();
 return `${month}-${day}-${year}`;
 };
 
-
-
-// Order Successfull Button
-
 const updateStatus = async (orderId) => {
-
 try {
-const response = await fetch("https://naturalbuti.onrender.com/updateOrderStatus", {
+const response = await fetch("https://omega-zg6z.onrender.com/updateOrderStatus", {
 method: "POST",
 headers: {
 "Content-Type": "application/json",
@@ -136,49 +114,34 @@ order.razorpay_order_id === orderId
 } catch (error) {
 console.error("Update error:", error);
 }
-
 };
-
 
 return (
 
-
 <div>
-
-<Helmet>
-<title>Customer Orders Dashboard | Pickle Admin</title>
-<meta
-name="description"
-content="View all customer orders placed on Pickle. Monitor customer details, order status, amount, and product information."
-/>
-<meta
-name="keywords"
-content="Customer orders, admin dashboard, Pickle orders, order management, ecommerce admin"
-/>
-<meta name="robots" content="noindex, nofollow" />
-</Helmet>
 
 <DashboardNav
 toggleSidebar={toggleSidebar}
 sidebarOpen={sidebarOpen}
-navContainer={navContainer}
-></DashboardNav>
+navContainer={navContainer}/>
+
 <DashboardSlider sidebarOpen={sidebarOpen} />
 
+<div
+className={`RelativeDB_product ${
+relative_CustordersCon ? "RelativeDB_PRQuery-inside" : ""
+}`}>
 
 <div
-className={`Parent_relativeCust ${
-relative_CustordersCon ? "relative_Custorders_inside" : ""
-}`}
->
+className={`DB_products_ ${
+relative_CustordersCon ? "DB_products_PRQuery-inside" : ""
+}`} >
 
-<h3 className="custorders-header">
-Orders Placed : {totalcustProducts}
-</h3>
+<div className="table-wrapper">
 
 <div className="filter-container">
 
-<label htmlFor="date-filter">Filter by Date:</label>
+<label htmlFor="date-filter">Filter By Date</label>
 <input
 id="date-filter"
 type="date"
@@ -186,19 +149,14 @@ value={selectedDate}
 onChange={(e) => setSelectedDate(e.target.value)}
 />
 <button onClick={handleFilterSubmit}>Apply Filter</button>
-
 </div>
 
-
-<div className="relative_Custorders">
-<div className="custorders-container">
-<table className="custorders-table">
+<table className="product-table">
 <thead>
-
 <tr>
-<th># ID</th>
-<th># Product</th>
-<th>Product Name</th>
+<th>Image</th>
+<th>Product</th>
+<th>Code</th>
 <th>Name</th>
 <th>Mobile</th>
 <th>Email</th>
@@ -217,9 +175,7 @@ onChange={(e) => setSelectedDate(e.target.value)}
 </thead>
 
 <tbody>
-
 {customerOrder.map((CusDB, index) => {
-
 const colors = ['#FFB6C1', '#87CEFA', '#98FB98', '#FFD700', '#FFA07A', '#DDA0DD'];
 const bgColor = colors[index % colors.length];
 
@@ -227,34 +183,24 @@ return (
 
 <tr key={index}>
 
-<td className="id_td"># {CusDB.id}</td>
-
-<td colSpan="1">
+<td className="tdData">
 {CusDB.file_path && (
 <img
-src={`http://localhost:3001${CusDB.file_path}`}
+src={`https://omega-zg6z.onrender.com${CusDB.file_path}`}
 alt={CusDB.name}
-className="custorders-image"
-style={{
-width: "50px",
-height: "50px",
-borderRadius: "6px",
-objectFit: "cover"
-}}
+className="product-img"
 />
 )}
 </td>
 
+<td className="tdData">{CusDB.productname}</td>
+<td className="tdData">{CusDB.id}</td>
+<td className="tdData">{CusDB.name}</td>
+<td className="tdData">{CusDB.mob}</td>
+<td className="tdData">{CusDB.email}</td>
 
-<td className="name_td">
-{CusDB.productname}
-</td>
+<td className="tdData">
 
-<td className="name_tdItem">{CusDB.name}</td>
-<td>{CusDB.mob}</td>
-<td className="name_td">{CusDB.email}</td>
-
-<td>
 <span
 style={{
 backgroundColor: bgColor,
@@ -262,53 +208,47 @@ color: "#000",
 borderRadius: "5px",
 display: "inline-block",
 minWidth: "79px",
-textAlign: "center"
+textAlign: "center",
+padding: "4px 8px"
 }}
 >
 {CusDB.payment_status}
 </span>
+
 </td>
 
-<td style={{minWidth : '143px'}}
->{formatDate(CusDB.date)}</td>
-<td>{CusDB.gender}</td>
+<td className="tdData">{formatDate(CusDB.date)}</td>
+<td className="tdData">{CusDB.gender}</td>
+<td className="tdData">{CusDB.address}</td>
+<td className="tdData">{CusDB.country}</td>
+<td className="tdData">{CusDB.pincode}</td>
+<td className="tdData">{CusDB.state}</td>
+<td className="tdData">₹ {CusDB.amount}</td>
+<td className="tdData">{CusDB.quantity}</td>
+<td className="tdData">{CusDB.status_order}</td>
 
-<td className="name_td">{CusDB.address}</td>
+<td className="tdData">
 
-<td>{CusDB.country}</td>
-<td>{CusDB.pincode}</td>
-<td>{CusDB.state}</td>
-<td>₹ {CusDB.amount}</td>
-<td>{CusDB.quantity}</td>
-<td>{CusDB.status_order}</td>
-
-<td>
 <button
 className="custOrderBtn"
 onClick={() => updateStatus(CusDB.razorpay_order_id)}
-disabled={CusDB.status_order === "Delivered"}
->
+disabled={CusDB.status_order === "Delivered"} >
+
 {CusDB.status_order === "Delivered" ? "Delivered" : "Mark as Delivered"}
 </button>
 </td>
-
 </tr>
-
 );
-
 })}
-
 </tbody>
 </table>
-
-</div>
-</div>
 </div>
 
+</div>
+</div>
 </div>
 
 );
-
 }
 
 export default Custorders;

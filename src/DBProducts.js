@@ -6,7 +6,6 @@ import "./DBProducts.css";
 
 function DBProducts() {
 
-
 const [storeDB, setstoreDB] = useState([]);
 const [totalProducts, setTotalProducts] = useState(0);
 
@@ -15,7 +14,7 @@ const DbFetch = async () => {
 
 try {
 
-const response = await fetch("https://naturalbuti.onrender.com/fetchDB");
+const response = await fetch("https://omega-zg6z.onrender.com/fetchDB");
 
 const data = await response.json();
 
@@ -42,7 +41,6 @@ setRelativeDB_PRQuery((prevState) => !prevState);
 setDB_products_PRQuery((prevState) => !prevState);
 };
 
-
 const navigate = useNavigate();
 
 useEffect(() => {
@@ -57,6 +55,7 @@ navigate("/adminlogin");
 return (
 
 <div>
+
 <DashboardNav
 toggleSidebar={toggleSidebar}
 sidebarOpen={sidebarOpen}
@@ -75,12 +74,7 @@ RelativeDB_PRQuery ? "RelativeDB_PRQuery-inside" : ""
 <div
 className={`DB_products_ ${
 DB_products_PRQuery ? "DB_products_PRQuery-inside" : ""
-}`}
->
-
-<div className="Flx_DBProducts">
-<h2>Total Items : {totalProducts}</h2>
-</div>
+}`} >
 
 <div className="table-wrapper">
 
@@ -88,31 +82,30 @@ DB_products_PRQuery ? "DB_products_PRQuery-inside" : ""
 
 <thead>
 <tr>
-<th># ID</th>
-<th># Product</th>
+<th>Image</th>
+<th className="tdData">Product</th>
+<th>Code</th>
 <th className="tdData">Category</th>
-<th className="tdData">Name</th>
 <th>Sizes</th>
 <th>Price</th>
 </tr>
 </thead>
 
-
 <tbody>
 {storeDB.map((DisDb, index) => (
 <tr key={index}>
-<td># {DisDb.id}</td>
 <td>
 {DisDb.file_path && (
 <img
-src={`http://localhost:3001${DisDb.file_path}`}
+src={`https://omega-zg6z.onrender.com${DisDb.file_path}`}
 alt={DisDb.name}
 className="product-img"
 />
 )}
 </td>
-<td>{DisDb.img}</td>
 <td>{DisDb.name}</td>
+<td>{DisDb.id}</td>
+<td>{DisDb.img}</td>
 
 <td>
 {DisDb.sizes &&

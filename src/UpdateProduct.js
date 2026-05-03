@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import uploadProductImg from "./Images_ToolsSymbols/uploadProduct.jpg";
 import "./UpdateProduct.css";
 
-
 function UpdateProduct({ Update_relativeCon, update_containerCon }) {
 
 const [oldName, setOldName] = useState("");
@@ -27,7 +26,7 @@ formData.append("image", productImage);
 }
 
 try {
-const response = await fetch("https://naturalbuti.onrender.com/api/update-product", {
+const response = await fetch("https://omega-zg6z.onrender.com/api/update-product", {
 method: "POST",
 body: formData,
 });
@@ -56,20 +55,17 @@ return (
 <div
 className={`Update_relative ${
 Update_relativeCon ? "Update_relativeConinside" : ""
-}`}
->
+}`} >
+
 <div
 className={`update-product-container ${
 update_containerCon ? "update_containerConinside" : ""
-}`}
->
+}`} >
+
 <section>
 
-<form
-onSubmit={handleUpdateProduct}
-className="update-product-form"
->
-
+<form onSubmit={handleUpdateProduct}
+className="update-product-form">
 
 <div className="Flx_IconPrct">
 <img className="IconAddPrdct"
@@ -77,40 +73,37 @@ src="https://cdn-icons-png.flaticon.com/128/9404/9404720.png"></img>
 <h3 id="addTag">UPDATE PRODUCTS</h3>
 </div>
 
-
 <section>
 
+<section className="flex_section">
 <div className="addProductDiv">
-<label>Old Product Name :</label>
+<label>Old Product Name</label>
 <input
 type="text"
 value={oldName}
 onChange={(e) => setOldName(e.target.value)}
 required
 placeholder="Old Product Name"
-maxLength={30}
-/>
+maxLength={30} />
+</div>
 
-<label>New Product Name :</label>
+<div className="addProductDiv">
+<label>New Product Name</label>
 <input
 type="text"
 value={newName}
 onChange={(e) => setNewName(e.target.value)}
 required
 placeholder="New Product Name"
-maxLength={30}
-/>
-
+maxLength={30} />
 </div>
-
-<img src={uploadProductImg}></img>
-
 </section>
 
-<label>Price :</label>
 
+<section className="flex_section">
+<div className="addProductDiv">
+<label>Price</label>
 <input
-
 type="number"
 value={productPrice}
 required
@@ -120,16 +113,17 @@ onChange={(e) => {
 if (e.target.value.length <= 5) {
 setProductPrice(e.target.value);
 }
-}}
+}} />
+</div>
 
-/>
+</section>
 
+</section>
 
 <input
 style={{ display: "none" }}
 type="file"
-onChange={handleImageChange}
-/>
+onChange={handleImageChange} />
 
 <button type="submit" className="update-product-btn">
 {" "}

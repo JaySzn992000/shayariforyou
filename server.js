@@ -13,10 +13,9 @@ const app = express();
 require("dotenv").config();
 const pool = require("./config");
 
-
 app.use(cors({
 origin: [
-'https://winsome-bloom.vercel.app'
+'http://localhost:3000'
 ],
 methods: ['GET', 'POST', 'PUT', 'DELETE'],
 credentials: true
@@ -2081,8 +2080,8 @@ res.status(400).json({ error: "Payment verification failed" });
 // },
 // });
 
-// // Configure
-// // multer for multiple fields
+// Configure
+// multer for multiple fields
 
 // const upload = multer({
 // storage: storage,
@@ -2307,7 +2306,6 @@ res.status(500).send("Upload failed");
 // }
 // );
 
-//
 
 // app.post("/api/update-product", upload.single("image"), (req, res) => {
 // const { oldName, newName, price } = req.body;
@@ -2571,24 +2569,24 @@ res.status(500).json({ message: "Fetch error", error: err.message });
 
 
 
-app.post("/fetchCutomerOrder", async (req, res) => {
-const { date } = req.body;
+// app.post("/fetchCutomerOrder", async (req, res) => {
+// const { date } = req.body;
 
-let query = "SELECT * FROM _custorder";
-let params = [];
+// let query = "SELECT * FROM _custorder";
+// let params = [];
 
-if (date) {
-query += " WHERE DATE(date) = $1";
-params.push(date);
-}
+// if (date) {
+// query += " WHERE DATE(date) = $1";
+// params.push(date);
+// }
 
-try {
-const result = await pool.query(query, params);
-res.json({ products: result.rows, total: result.rows.length });
-} catch (err) {
-res.status(500).json({ error: "DB error", details: err.message });
-}
-});
+// try {
+// const result = await pool.query(query, params);
+// res.json({ products: result.rows, total: result.rows.length });
+// } catch (err) {
+// res.status(500).json({ error: "DB error", details: err.message });
+// }
+// });
 
 
 // app.post("/updateOrderStatus", (req, res) => {

@@ -14,7 +14,7 @@ const DbFetch = async () => {
 
 try {
 
-const response = await fetch("https://naturalbuti.onrender.com/adminusersDeatils");
+const response = await fetch("https://omega-zg6z.onrender.com/adminusersDeatils");
 
 const data = await response.json();
 
@@ -26,7 +26,8 @@ console.error("Error message:", error);
 };
 
 DbFetch();
-}, []);
+
+}, [] );
 
 const [RelativeDB_PRQuery, setRelativeDB_PRQuery] = useState(false);
 
@@ -41,7 +42,6 @@ setRelativeDB_PRQuery((prevState) => !prevState);
 setDB_products_PRQuery((prevState) => !prevState);
 };
 
-
 const navigate = useNavigate();
 
 useEffect(() => {
@@ -52,16 +52,16 @@ navigate("/adminlogin");
 }
 }, [navigate] );
 
-
 return (
 
 <div>
+
 <DashboardNav
 toggleSidebar={toggleSidebar}
 sidebarOpen={sidebarOpen}
-navContainer={navContainer}
->
+navContainer={navContainer} >
 {" "}
+
 </DashboardNav>
 
 <DashboardSlider sidebarOpen={sidebarOpen} />
@@ -69,35 +69,32 @@ navContainer={navContainer}
 <div
 className={`RelativeDB_product ${
 RelativeDB_PRQuery ? "RelativeDB_PRQuery-inside" : ""
-}`}
->
+}`} >
+
 <div
 className={`DB_products_ ${
 DB_products_PRQuery ? "DB_products_PRQuery-inside" : ""
-}`}
->
-
-<div className="Flx_DBProducts">
-<h2>Admin Active : {totalProducts}</h2>
-</div>
+}`} >
 
 <div className="table-wrapper">
+
 <table className="product-table">
 <thead>
 <tr>
-<th># Name</th>
+<th># Username</th>
 <th>Passwords</th>
 </tr>
 </thead>
 <tbody>
-
 {storeDB.map((DisDb, index) => {
 
 const colors = ['#FFB6C1', '#87CEFA', '#98FB98'];
 const bgColor = colors[index % colors.length];
 
 return (
+
 <tr key={index}>
+
 <td>{DisDb.adminuser}</td>
 <td>
 <span
@@ -112,12 +109,12 @@ minWidth: "77px",
 height : '28px',
 display: "inline-block",
 textAlign: "center"
-}}
->
+}} >
 {DisDb.adminpass}
 </span>
 </td>
 </tr>
+
 )
 })}
 

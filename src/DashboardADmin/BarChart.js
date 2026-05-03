@@ -6,48 +6,48 @@ const BarChart = () => {
 const [chartData, setChartData] = useState({
 
 options: {
-  chart: {
-    id: "monthly-earnings",
-    toolbar: { show: false },
-  },
-  xaxis: {
-    categories: [],
-    labels: { rotate: -45 },
-  },
-  yaxis: {
-    labels: {
-      formatter: function (val) {
-        return "₹ " + val.toFixed(0);
-      }
-    }
-  },
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      columnWidth: '55%',
-      borderRadius: 5,
-      borderRadiusApplication: 'end',
-    },
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  stroke: {
-    show: true,
-    width: 2,
-    colors: ['transparent'],
-  },
-  fill: {
-    opacity: 1,
-  },
-  tooltip: {
-    y: {
-      formatter: function (val) {
-        return "₹ " + val.toFixed(0);
-      },
-    },
-  },
-  colors: ["#00BFFF"],
+chart: {
+id: "monthly-earnings",
+toolbar: { show: false },
+},
+xaxis: {
+categories: [],
+labels: { rotate: -45 },
+},
+yaxis: {
+labels: {
+formatter: function (val) {
+return "₹ " + val.toFixed(0);
+}
+}
+},
+plotOptions: {
+bar: {
+horizontal: false,
+columnWidth: '55%',
+borderRadius: 5,
+borderRadiusApplication: 'end',
+},
+},
+dataLabels: {
+enabled: false,
+},
+stroke: {
+show: true,
+width: 2,
+colors: ['transparent'],
+},
+fill: {
+opacity: 1,
+},
+tooltip: {
+y: {
+formatter: function (val) {
+return "₹ " + val.toFixed(0);
+},
+},
+},
+colors: ["#00BFFF"],
 },
 series: [
 {
@@ -57,17 +57,13 @@ data: [],
 ],
 });
 
-
 useEffect(() => {
 const fetchCustomerOrders = async () => {
 
 try {
 
-const response = await fetch("https://naturalbuti.onrender.com/fetchCutomerOrder");
+const response = await fetch("https://omega-zg6z.onrender.com/fetchCutomerOrder");
 const data = await response.json();
-
-// Month-wise 
-//  grouping
 
 const earningsByMonth = data.products.reduce((acc, item) => {
 const dateObj = new Date(item.date);
@@ -113,6 +109,7 @@ return (
 <div>
 
 <div className="chart-container">
+
 <h3 className="ChartsTg">Monthly Earnings by BarChart</h3>
 <label>Sales/Revenue</label>
 <ReactApexChart

@@ -15,26 +15,21 @@ const AdminProfile = () => {
 AdminProfileNavi('/AdminProfile')
 }
 
-
 return (
 
 <div>
-
-{/*  */}
 
 <nav className="dashboard-nav">
 
 <div
 className={`nav_insidenav ${
 navContainer ? "navContainer-inside" : ""
-}`}
->
+}`} >
 
 <section className="dashboard_firstContainer">
 <div>
 
 <img
-className="fa fa-bars"
 onClick={toggleSidebar}
 src="https://cdn-icons-png.flaticon.com/128/5259/5259008.png"
 alt=""
@@ -49,20 +44,18 @@ loading="lazy"
 Dashboard
 </li>
 </div>
-</section>
 
-{/*  */}
+</section>
 
 <section>
 
 <div onClick={AdminProfile} >
 <img
-style={{ width: "47px"}}
 src={DashboarUserIcon}
 alt=""
 loading="lazy"
 ></img>
-<li className="liDashboard">Users</li>
+<li className="liDashboard">Profile</li>
 </div>
 </section>
 </div>

@@ -1,16 +1,18 @@
-/* Done */
+
+.flex_section{
+display: flex;
+}
 
 .addProduct_form #addTag {
 width: 157px;
 height: 81px;
 padding: 11px;
-font-size: 1.1rem;
+font-size: 1.3rem;
 margin-bottom: 1.3em;
 border-radius: 7px;
 color: #000000;
-line-height: 2.1em;
+line-height: 1.6em;
 }
-
 
 .Product_relative {
 width: 95%;
@@ -18,14 +20,12 @@ margin: auto;
 transition: all 0.3s ease;
 }
 
-
 .dashboard-container {
 position: relative;
-margin: 5.7em auto 0 17vw;
+margin: 3.1em auto 0 17vw;
 transition: all 0.3s ease;
 padding: 27px;
 }
-
 
 .productManageTag {
 font-size: 1.2rem;
@@ -34,11 +34,9 @@ margin-bottom: 1.1em;
 text-align: start;
 }
 
-
 .Product_relativeConinside {
 width: 95%;
 }
-
 
 .dashboard-containerConinside {
 margin-left: 0;
@@ -52,7 +50,6 @@ margin-top: 2.7em;
 border-radius: 7px;
 text-align: start;
 }
-
 
 .dashboard-container .container_upload h3 {
 margin: 0.3em 0 0.7em;
@@ -78,7 +75,6 @@ font-size: 0.8rem;
 color: #808080;
 }
 
-
 .dashboard-container .addProduct_form {
 align-items: center;
 justify-content: start;
@@ -90,31 +86,25 @@ width: 100%;
 box-shadow: 0 4px 6px rgba(2, 0, 0, 0.195);
 }
 
-
 .dashboard-container .addProduct_form .addProductDiv {
-display: flex;
-gap: 2.3em;
 width: 100%;
-margin-bottom: .8em;
+margin-bottom: .7em;
 }
-
 
 .dashboard-container .addProduct_form input {
-padding: 11px;
+padding: 12px;
+width: 95%;
 outline: none;
 border: 1px solid #DCDCDC;
-border-radius: 13px;
-margin-top: 0.5em;
+border-radius: 7px;
+margin-top: 0.3em;
 }
-
 
 .dashboard-container .addProduct_form .ImgAddPdct {
 width: 227px;
-position: absolute;
-right: 7.3%;
+right: 7.3vw;
 top: 6.7em;
 }
-
 
 .Flx_IconPrct {
 display: flex;
@@ -122,11 +112,9 @@ align-items: center;
 gap: 1.1em;
 }
 
-
 .IconUpdatePrdct{
 width: 53px;
 }
-
 
 .dashboard-container .addProduct_form h3 {
 font-size: 1.1rem;
@@ -134,17 +122,15 @@ font-weight: normal;
 margin: 0.7em 0 0.1em;
 }
 
-
 .dashboard-container .addProduct_form label {
 font-size: 0.9rem;
-line-height: 2.3em;
+line-height: 2em;
+font-weight: normal;
 }
-
 
 .dashboard-container .addProduct_form input:focus {
-border-color: rgb(65, 105, 225);
+border-color: #4169E1;
 }
-
 
 .textArea_Add {
 height: 137px;
@@ -155,11 +141,10 @@ border-radius: 13px;
 margin-top: 0.5em;
 }
 
-
 .dashboard-container .addProduct_form button {
 color: #FFFFFF;
-width: 143px;
-padding: 15px;
+width: 127px;
+padding: 14px;
 background-color: #4169E1;
 border: 1px solid #808080;
 margin-top: 1.5em;
@@ -168,22 +153,19 @@ cursor: pointer;
 transition: background-color 0.3s ease;
 }
 
-
 .dashboard-container .addProduct_form button:hover {
 background-color: #483d8b;
 }
 
-
 .dashboard-container .upload_container {
 display: flex;
 justify-content: center;
-border: 2px dotted rgba(0, 0, 0, 0.205);
+border: 2px dotted#00000034;
 border-radius: 4px;
 padding: 33px;
 padding-bottom: 57px;
 text-align: center;
 }
-
 
 .upload_container .upload-box {
 display: flex;
@@ -192,13 +174,11 @@ align-items: center;
 width: 100%; 
 }
 
-
 .upload_container .upload-box .browse-btn {
 display: block;
 width: 95%; 
 margin-bottom: -1.7em;
 }
-
 
 .dashboard-container .upload_container .upload-box img {
 width: 67px;
@@ -224,12 +204,10 @@ transition: color 0.3s ease;
 color: #6A5ACD;
 }
 
-
 .upload_container .up_ph4 {
 margin-top: .7em;
 color: #808080;
 }
-
 
 #descr_lable {
 margin-top: .8em;
@@ -239,17 +217,18 @@ margin-top: .8em;
 
 @media (max-width: 768px) {
 
+.flex_section{
+flex-direction: column;
+}
 
 .dashboard-container .addProduct_form{
 width: 100%;
 height: auto;
 }
 
-
 .dashboard-container .addProduct_form input {
 width: 100%;
 }
-
 
 .dashboard-container .addProduct_form .addProductDiv {
 display: flex;
@@ -259,12 +238,10 @@ gap: 0em;
 margin-bottom: .3em;
 }
 
-
 .dashboard-container .addProduct_form .IconUpdatePrdct {
 margin-left: 4.3%;
 position: relative;
 }
-
 
 .dashboard-container .addProduct_form .ImgAddPdct {
 position: relative;
@@ -272,24 +249,20 @@ top: 1.3em;
 right: 0;
 }
 
-
 .dashboard-container .addProduct_form button {
 width: 100%;
 padding: 13px;
 }
-
 
 .dashboard-container .upload_container {
 padding: 11px;
 padding-bottom: 53px;
 }
 
-
 .upload_container span {
 font-size: 1.1rem;
 line-height: 1.9em;
 }
-
 
 .dashboard-container {
 padding: 7px;
@@ -297,7 +270,6 @@ margin: 4.7em auto 0 0;
 box-sizing: border-box;  
 width: 100%; 
 }
-
 
 .dashboard-container .addProduct_form label {
 margin-bottom: 0em;
@@ -307,9 +279,7 @@ margin-top: .3em;
 }
 
 
-
 @media (min-width: 769px) and (max-width: 992px) {
-
 
 .dashboard-container .addProduct_form .addProductDiv {
 display: flex;
@@ -318,14 +288,12 @@ gap: .5em;
 margin-bottom: .8em;
 }
 
-
 .dashboard-container .addProduct_form input {
 height: 37px;
-width: 23vw;
 }
 
 .addProduct_form #addTag  {
-font-size: 1rem;
+font-size: 1.3rem;
 }
 
 .Product_relative {
@@ -349,9 +317,7 @@ margin-left: 0;
 }
 
 
-
 @media (min-width: 992px) and (max-width: 1245px) {
-
 
 .dashboard-container .addProduct_form .addProductDiv {
 display: flex;
@@ -360,23 +326,14 @@ gap: .6em;
 margin-bottom: .8em;
 }
 
-
 .dashboard-container .addProduct_form img {
 margin-right: .3%;
 margin-top: 2.3%;
 }
 
-
-.dashboard-container .addProduct_form input {
-height: 37px;
-width: 34vw;
-}
-
-
 .addProduct_form .flex_addproducts label {
 line-height: 2.1em;
 }
-
 
 .Product_relative {
 width: 100%;
@@ -394,34 +351,34 @@ width: 100%;
 margin-left: 0;
 }
 
-
 }
 
 
 
 @media (min-width: 1245px) and (max-width: 1519px) {
 
-
 .dashboard-container .addProduct_form .addProductDiv {
 display: flex;
-gap: 1.3em;
-width: 65%;
+flex-direction: column;
+gap: .6em;
 margin-bottom: .8em;
 }
 
-
-.dashboard-container .addProduct_form input {
-height: 37px;
-width: 147px;
+.dashboard-container .addProduct_form img {
+margin-right: .3%;
+margin-top: 2.3%;
 }
 
+.addProduct_form .flex_addproducts label {
+line-height: 2.1em;
+}
 
 .Product_relative {
 width: 100%;
 }
 
 .dashboard-container {
-margin-left: 24vw;
+margin-left: 30vw;
 }
 
 .Product_relativeConinside {
@@ -431,5 +388,6 @@ width: 100%;
 .dashboard-containerConinside {
 margin-left: 0;
 }
+
 
 }
