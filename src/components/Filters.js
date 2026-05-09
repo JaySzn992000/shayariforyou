@@ -25,6 +25,7 @@ if (selectedNames.length > 0) {
 filtered = filtered.filter((product) =>
 selectedNames.includes(product.img)
 );
+
 }
 
 if (isPriceChanged) {
@@ -34,6 +35,7 @@ filtered = filtered.filter(
 }
 
 onFilterUpdate(filtered);
+
 }, [
 minPrice,
 maxPrice,
@@ -41,7 +43,6 @@ isPriceChanged,
 selectedNames,
 allProducts,
 ]);
-
 
 const handlePriceChange = () => setIsPriceChanged(true);
 
@@ -62,11 +63,11 @@ navigate(`${newQuery}`);
 
 return newNames;
 });
+
 };
 
 const ClickFilter = () => setfilters_div(true);
 const FilterClose = () => setfilters_div(false);
-
 
 return (
 
@@ -80,9 +81,8 @@ return (
 loading="lazy"
 onClick={ClickFilter}
 className="filter_"
-src="https://cdn-icons-png.flaticon.com/128/10609/10609382.png"
-alt=""
-></img>
+src="https://cdn-icons-png.flaticon.com/128/7094/7094575.png"
+alt=""></img>
 
 </div>
 
@@ -139,6 +139,7 @@ style={{ width: "90%" }} />
 {[
 "Face Wash",
 "Face Cream",
+"Fruit Cake",
 "Sunscreen",
 "Shampoo",
 "Hair Serum",
@@ -166,6 +167,7 @@ cursor: "pointer",
 </div>
 </label>
 ))}
+
 </div>
 </div>
 

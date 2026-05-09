@@ -35,7 +35,6 @@ line-height: 1.4;
 }
 }
 
-
 .normal_header {
 background-color: #231F20;
 padding-top: 17px;
@@ -53,10 +52,10 @@ width: 100%;
 }
 
 .div_header .newsletter {
-padding: 13px;
-padding-left: 15px;
+padding: 12px;
+padding-left: 21px;
 padding-right: 57px;
-border-radius: 5px;
+border-radius: 27px;
 border: 0.5px solid rgba(255, 255, 255, 0.2);
 outline: none;
 color: #fff;
@@ -128,7 +127,7 @@ color: #fff;
 .div_header button {
 background-color: #fff;
 border: 2px solid transparent;
-padding: .8em 2.5em;
+padding: .8em 2.4em;
 font-size: .95rem;
 margin-top: 1.7em;
 cursor: pointer;

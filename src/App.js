@@ -21,6 +21,7 @@ import NavSliderDash from "./NavSliderDash";
 import TlPrdctOrdrearn from "./DashboardADmin/TlPrdctOrdrearn";
 import Navbar from "./headers_footer/navbar";
 import Home from "./components/Home";
+import Lotusfetch from "./Products/lotusfetch";
 import Lotus from "./Products/lotus";
 import O3plus from "./Products/o3plus";
 import ContactForm from "./components/contactform";
@@ -108,6 +109,7 @@ return (
 <Route path="/NavSliderDash" element={<NavSliderDash />} />
 <Route path="/TlPrdctOrdrearn" element={<TlPrdctOrdrearn />} />
 <Route path="/Navbar" element={<Navbar />} />
+<Route path="/lotusfetch" element={<Lotusfetch />} />
 <Route path="/lotus" element={<Lotus />} />
 <Route path="/o3plus" element={<O3plus />} />
 <Route path="/Fragrance" element={<Fragrance />}/>

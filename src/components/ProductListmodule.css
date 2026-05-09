@@ -1,5 +1,4 @@
 
-
 .ListBanner {
 width: 100%;
 }
@@ -11,60 +10,56 @@ width: 100%;
 #sticky_products_height {
 height: auto;
 position: relative;
-margin-top: -60em;
 }
 
 .sticky-wrapper {
 position: sticky;
 top: 121px;
 }
-
+    
 .flex_productlist {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(263px, 1fr));
-max-width: 73%;
-margin-left: 23.5vw;
+grid-template-columns: repeat(auto-fit, minmax(283px, 1fr));
 }
 
 .flex_productlist .produclist_divContainer {
 position: relative;
 height: auto;
-max-width: 263px;
+max-width: 283px;
 margin-bottom: 2.1em;
 }
 
 .flex_productlist .produclist_divContainer img {
 width: 100%;
 margin-bottom: -0.5em;
-padding: 7px;
 }
 
 .flex_productlist .padding_contain {
 width: 100%;
-padding: 13px;
+padding: 11px;
 }
 
-.review_Cntnr {
+.review_Center {
 display: flex;
 justify-content: center;
 align-items: center;
-width: 100%;
 gap: 0em;
-transform: translateX(32%);
 }
 
-.review_Cntnr .fa_Review{
+.review_Center .fa_Review{
 margin-top: .7em;
 }
 
 .padding_contain #Review_Img {
 width: 31px;
+padding: 6px;
 margin-top: -.4em;
 }
 
-.review_Cntnr .fa_Review {
+.review_Center .fa_Review {
 color: rgb(70, 69, 69);
 }
+
 
 .flex_productlist .padding_contain .sizeClr {
 color: rgb(128, 128, 128);
@@ -112,7 +107,7 @@ right: 0px;
 z-index: 999;
 padding: 11px;
 font-size: 1.2rem;
-margin-right: 1.3em;
+margin-right: .7em;
 margin-top: .7em;
 color: #DCDCDC;
 transition: background-color 0.3s ease;
@@ -121,6 +116,7 @@ cursor: pointer;
 
 .fa-heart_products.wishlist-active {
 color: #EF9FC9 !important;
+background-color: transparent !important;
 }
 
 .add_crt {
@@ -191,22 +187,22 @@ line-height: 2em;
 
 .flex_productlist {
 display: grid;
-max-width: 96%;
+max-width: 97%;
 transform: translateX(1.7vw);
 margin-left: 0vw;
-margin-top: 2.5em;
+margin-top: 3.5em;
 grid-template-columns: repeat(2, 1fr);
 }
 
 .flex_productlist .produclist_divContainer {
 max-width: 100%;
-width: 100%;
+width: 98%;
 box-sizing: border-box;
 }
 
 .flex_productlist .padding_contain {
 width: 100%;
-padding: 0;
+padding: 9px;
 margin-top: .5em;
 }
 
@@ -221,10 +217,6 @@ width: 100%;
 padding: 2px;
 }
 
-.flex_productlist {
-gap: .2em;
-}
-
 .fa-heart_products {
 padding: 0px;
 font-size: 1.1rem;
@@ -232,14 +224,14 @@ margin-right: .7em;
 margin-top: .7em;
 }
 
-.review_Cntnr {
-transform: translate(0);
-}
-
 .padding_contain #Review_Img {
 width: 21px;
-margin-right: .2em;
+margin-right: .3em;
 margin-top: -.4em;
+}
+
+.review_Center {
+transform: translate(0);
 }
 
 }
@@ -254,16 +246,19 @@ margin: 0em 0em 0em 0em;
 
 .flex_productlist {
 display: grid;
-max-width: 95%;
-transform: translateX(2.3vw);
+max-width: 98%;
 margin-left: 0;
-margin-top: 3.7em;
-grid-template-columns: repeat(3, 1fr);
+margin-top: 1.3em;
+grid-template-columns: repeat(2, 1fr);
 }
 
-.flex_productlist .padding_contain {
+.flex_productlist .produclist_divContainer {
+max-width: 98%;
+}
+
+.flex_productlist .produclist_divContainer img {
 width: 100%;
-padding: 0;
+padding: 2px;
 }
 
 .add_crt {
@@ -272,11 +267,7 @@ width: 97%;
 font-size: .9rem;
 }
 
-.flex_productlist .produclist_divContainer {
-max-width: 100%;
-}
-
-.review_Cntnr {
+.review_Center {
 transform: translateX(0);
 }
 
@@ -284,7 +275,7 @@ transform: translateX(0);
 
 
 
-@media (min-width: 1037px) and (max-width: 1519px) {
+@media (min-width: 1037px) and (max-width: 1138px) {
 
 .header_Filter {
 width: 100%;
@@ -294,18 +285,20 @@ margin: 0em 0em 0em 0em;
 .flex_productlist {
 position: relative;
 display: grid;
-max-width: 69vw;
-margin-top: 2.5em;
-grid-template-columns: repeat(auto-fit, minmax(21vw, 0fr));
-transform: translateX(5.5vw);
+max-width: 68vw;
+margin-top: 1.7em;
+grid-template-columns: repeat(3, 1fr);
 }
 
 .flex_productlist .produclist_divContainer {
 position: relative;
 height: auto;
 margin-bottom: 2.1em;
-/* border: 1px solid rgba(27, 6, 6, 0.055);
-box-shadow: 0 0 4px rgba(0,0,0,0.2); */
+}
+
+.flex_productlist .produclist_divContainer img {
+width: 100%;
+padding: 5px;
 }
 
 .header_Filter {
@@ -322,6 +315,38 @@ margin-bottom: 13.7em;
 padding: 10px;
 width: 75%;
 font-size: .9rem;
+}
+
+}
+
+
+@media (min-width: 1138px) and (max-width: 1519px) {
+
+
+.flex_productlist {
+position: relative;
+display: grid;
+max-width: 71vw;
+margin-top: 1.7em;
+grid-template-columns: repeat(4, 1fr);
+}
+
+.flex_productlist .produclist_divContainer img {
+width: 100%;
+padding: 5px;
+}
+
+
+}
+
+
+@media (max-width : 1519px ) {
+
+.review_Center #Review_Img {
+width: 25px;
+margin-top: 0em;
+margin-right: .3em;
+padding: 2px;
 }
 
 }
