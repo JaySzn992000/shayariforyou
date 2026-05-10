@@ -101,10 +101,8 @@ Wish List
 </div>
 </div>
 
-<div className="header-ad">
 <Header></Header>
 
-</div>
 </div>
 
 );

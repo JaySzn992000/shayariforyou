@@ -225,7 +225,7 @@ onClick={() => handleAddToCart(productlist)}
 
 <FAqQuestions></FAqQuestions>
 
-<Header></Header>
+{/* <Header></Header> */}
 
 </div>
 

@@ -25,7 +25,6 @@ const [update_containerCon, setupdate_containerCon] = useState(false);
 const [Delete_relativeCon, setDelete_relativeCon] = useState(false);
 const [Delete_formCon, setDelete_formCon] = useState(false);
 
-
 const toggleSidebar = () => {
 
 setSidebarOpen((prevState) => !prevState);

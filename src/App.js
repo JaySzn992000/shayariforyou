@@ -42,7 +42,7 @@ import Message from "./components/Message";
 import CategoryJackfruit from "./Products/CategoryJackfruit";
 import Biotique from "./Products/biotique";
 import Lorealparis from "./Products/lorealparis";
-import CategoryLemon from "./Products/aroma";
+import CategoryLemon from "./Products/aromafetch";
 import HairGrowth from "./Products/face-wash";
 import SandalwoodPowder from "./Products/SandalwoodPowder";
 import CategoryGhee from "./Products/CategoryGhee";
@@ -69,6 +69,7 @@ import Sunscreen from "./Products/sunscreen";
 import Shampoo from "./Products/shampoo";
 import HairSerum from "./Products/hair-serum";
 import Haircolor from "./Products/hair-color";
+import VideoSlider from "./components/videoslider";
 
 
 function App () {
@@ -85,6 +86,7 @@ return (
 <Routes>
 <Route path="/Login" element={<Login />} />
 <Route path="/collections" element={<Collections />} />
+<Route path="/VideoSlider" element={<videoSlider />} />
 <Route path="/hair-care" element={<Haircare />} />
 <Route path="/skincare" element={<Skincare />} />
 <Route path="/bath-body" element={<BathBody />} />

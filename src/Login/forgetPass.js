@@ -4,7 +4,6 @@ import Header from "../headers_footer/header";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./forgetPass.css";
 
-
 const ForgetPass = () => {
 
 const [formdata, setformdata] = useState({

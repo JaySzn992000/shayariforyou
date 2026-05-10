@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import LogoNitiArya from "../Logo/LogoNitiArya.png";
+import { useState } from "react";
 import "./header.css";
 
 const Header = () => {
@@ -46,6 +47,25 @@ const Faqs = () => {
 MyFaqs('/FAQs')
 }
 
+const [email, setEmail] = useState("");
+const [subscribed, setSubscribed] = useState(false);
+const [error, setError] = useState("");
+
+const handleSubscribe = () => {
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if(emailPattern.test(email)){
+setSubscribed(true);
+setError("");
+}
+else{
+setSubscribed(false);
+setError("Please enter a valid email");
+}
+
+};
+
 return (
 
 <div>
@@ -88,12 +108,34 @@ loading="lazy"
 src={LogoNitiArya} alt="logo"></img>
 
 <h3>NEWSLETTER</h3>
+
 <p>Sign up to our newsletter to receive <br></br>
 exclusive offers.</p>
 
-<input className="newsletter" placeholder="E-mail"></input> <br></br>
+<input
+className="newsletter"
+placeholder="E-mail"
+value={email}
+onChange={(e) => setEmail(e.target.value)}
+></input>
 
-<button><span>SUBSCRIBE</span></button>
+<br></br>
+
+<button onClick={handleSubscribe}>
+<span>SUBSCRIBE</span>
+</button>
+
+{subscribed && (
+<p style={{color:"#ffff", marginTop:"10px"}}>
+You have subscribed successfully
+</p>
+)}
+
+{error && (
+<p style={{color:"#fff", marginTop:"10px"}}>
+{error}
+</p>
+)}
 
 </div>
 

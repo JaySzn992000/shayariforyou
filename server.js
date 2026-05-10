@@ -1035,7 +1035,6 @@ res.status(500).json({ error: "Database query failed" });
 // });
 
 
-
 // fetchProductslist PostGreSQL 
 
 app.get("/fetchProductslist", async (req, res) => {
@@ -1070,7 +1069,6 @@ res.status(500).json({ error: "Database query failed" });
 }
 });
 
-
 app.get("/fetchProductslist", (req, res) => {
 db.query("SELECT * FROM imgproduct", (err, results) => {
 if (err) {
@@ -1080,7 +1078,6 @@ return res.status(500).json({ error: "Database query failed" });
 res.json(results);
 });
 });
-
 
 
 app.get("/fetchProductslist", async (req, res) => {

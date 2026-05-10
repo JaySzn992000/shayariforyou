@@ -14,6 +14,7 @@ import Commitments from "./Commitments";
 import ShopCategory from "./ShopCategory";
 import Featured from "./Featured";
 import FavFavroute from "./FavFavroute";
+import VideoSlider from "./videoslider";
 // import BottomFavcomp from "../componentsBoot/bottomFavcomp";
 // import SlidCakeImg from "../Slider/CakeSlide.jpg";
 // import VideoSliderComponent from "../videoslider";
@@ -94,6 +95,8 @@ return (
 <Slider />
 
 <Iconicselection></Iconicselection>
+
+<VideoSlider></VideoSlider>
 
 <div className="tshirt_Left">
 <Pickles showFilters={showFilters} limit={10}></Pickles>
