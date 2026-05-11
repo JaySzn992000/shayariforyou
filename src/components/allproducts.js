@@ -182,7 +182,6 @@ loading="lazy"
 <div className="price_div">
 <li className="fa fa-inr"></li>
 <li className="fa_Price">{productlist.price}
-.00
 </li>
 </div>
 
