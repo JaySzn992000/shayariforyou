@@ -11,7 +11,7 @@ import { addToCart } from "../action/action";
 import FAqQuestions from "../components/FAqQuestions";
 
 
-const Shampoofetch = ({ showFilters = true, limit, addToCart }) => {
+const Shampoofetch = ({ showFilters = true, limit, addToCart, filter }) => {
 
 const [allProducts, setAllProducts] = useState([]); 
 const [filteredProducts, setFilteredProducts] = useState([]);
@@ -35,29 +35,65 @@ console.error("Error fetching Mangoes Pickles products:", error);
 }, [] ); 
 
 useEffect(() => {
+
 if (query) {
+
 axios
 .get("https://omega-zg6z.onrender.com/fetchshampoo", {
 params: { search: query },
 })
 .then((response) => {
-console.log("Fetched search results:", response.data); 
-setAllProducts(response.data); 
-setFilteredProducts(
-limit ? response.data.slice(0, limit) : response.data
-);
+
+setAllProducts(response.data);
+
 })
 .catch((error) => {
-console.error("Error fetching products with search query:", error);
+console.error("Error fetching products:", error);
 });
-} else {
-setFilteredProducts(allProducts); 
-}
-}, [query, allProducts]);
 
-const handleFilterUpdate = (filteredData) => {
-setFilteredProducts(filteredData);
-};
+} else {
+
+axios
+.get("https://omega-zg6z.onrender.com/fetchshampoo")
+.then((response) => {
+
+setAllProducts(response.data);
+
+})
+.catch((error) => {
+console.error("Error fetching all products:", error);
+});
+
+}
+
+}, [query] );
+
+useEffect(() => {
+
+if (!allProducts.length) return;
+
+let updatedProducts = [...allProducts];
+
+if (filter?.selectedNames?.length > 0) {
+
+updatedProducts = updatedProducts.filter((product) =>
+filter.selectedNames.includes(product.category)
+);
+
+}
+
+const min = filter?.minPrice ?? 0;
+const max = filter?.maxPrice ?? 100000;
+
+updatedProducts = updatedProducts.filter(
+(product) =>
+Number(product.price) >= min &&
+Number(product.price) <= max
+);
+
+setFilteredProducts(updatedProducts);
+
+}, [filter, allProducts]);
 
 const limitedProducts = filteredProducts.slice(0, limit);
 
@@ -109,7 +145,6 @@ useEffect(() => {
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 setCartCount(cart.length);
 }, []);
-
 
 const handleAddToCart = (product) => {
 

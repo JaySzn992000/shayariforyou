@@ -10,9 +10,8 @@ import Banner from "../Slider/Banner1.jpg"
 import "./ProductListmodule.css";
 import Header from "../headers_footer/header";
 
-const Skincarefetch = ({ addToCart}) => {
+const Skincarefetch = ({ addToCart, filter}) => {
 
-// fetchskincare
 
 const [filteredProducts, setFilteredProducts] = useState([]);
 const [allProducts, setAllProducts] = useState([]);
@@ -22,11 +21,10 @@ const [cartCount, setCartCount] = useState(0);
 const [arrayStore, setArrayStore] = useState([]);
 const [products, setProducts] = useState([]);
 
-
 useEffect(() => {
 
 axios
-.get("https://omega-zg6z.onrender.com/fetchproductslist")
+.get("https://omega-zg6z.onrender.com/fetchskincare")
 .then((res) => setProducts(res.data))
 .catch((err) => console.error(err));
 }, []);
@@ -55,7 +53,7 @@ JSON.parse(localStorage.getItem("wishlistStatus")) || {};
 setWishlistStatus(storedWishlistStatus);
 
 axios
-.get("https://omega-zg6z.onrender.com/fetchproductslist")
+.get("https://omega-zg6z.onrender.com/fetchskincare")
 .then((response) => {
 setArrayStore(response.data);
 setFilteredProducts(response.data);
@@ -72,7 +70,7 @@ const query = new URLSearchParams(location.search).get("search");
 useEffect(() => {
 if (query) {
 axios
-.get("https://omega-zg6z.onrender.com/fetchproductslist", {
+.get("https://omega-zg6z.onrender.com/fetchskincare", {
 params: { search: query },
 })
 .then((response) => {
@@ -84,7 +82,7 @@ console.error("Error fetching products:", error);
 });
 } else {
 axios
-.get("https://omega-zg6z.onrender.com/fetchproductslist")
+.get("https://omega-zg6z.onrender.com/fetchskincare")
 .then((response) => {
 setAllProducts(response.data);
 setFilteredProducts(response.data);
@@ -95,6 +93,32 @@ console.error("Error fetching all products:", error);
 }
 }, [query] );
 
+useEffect(() => {
+
+if (!allProducts.length) return;
+
+let updatedProducts = [...allProducts];
+
+if (filter?.selectedNames?.length > 0) {
+
+updatedProducts = updatedProducts.filter((product) =>
+filter.selectedNames.includes(product.category)
+);
+
+}
+
+const min = filter?.minPrice ?? 0;
+const max = filter?.maxPrice ?? 100000;
+
+updatedProducts = updatedProducts.filter(
+(product) =>
+Number(product.price) >= min &&
+Number(product.price) <= max
+);
+
+setFilteredProducts(updatedProducts);
+
+}, [filter, allProducts]);
 
 const sendToWishlist = (product) => {
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];

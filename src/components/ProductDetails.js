@@ -206,14 +206,10 @@ loading="lazy"
 </section>
 
 <div className="review_Cntnr">
-
 <img
-id="Review_Img"
-src="https://cdn-icons-png.flaticon.com/128/15853/15853959.png"
-/>
-
+id="Review_Image"
+src="https://cdn-icons-png.flaticon.com/128/15853/15853959.png"/>
 <li className="fa_Review">{arrayStore.review}</li>
-
 </div>
 
 <div className="flex_btnADD_CART">
@@ -250,7 +246,7 @@ GO TO CART
 
 <h2>Description</h2>
 
-<p style={{marginTop : '-1.5em'}} className="prdctDetails">
+<p className="prdctDetails">
 
 <br></br>
 

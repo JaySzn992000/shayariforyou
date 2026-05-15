@@ -67,16 +67,16 @@ display: none;
 }
 
 .descproduct {
-margin-top: 2.3em;
 width: 85%;
 margin: auto;
 text-align: start;
-margin-top: 2.9em;
 }
 
 .prdctDetails {
 width: 100%;
 text-align: justify;
+margin-top: -1.3em;
+margin-bottom: 2.3em;
 line-height: 2.7em;
 color: #313131;
 }
@@ -221,16 +221,14 @@ cursor: pointer;
 
 .review_Cntnr {
 display: flex;
-justify-content: start !important;
-gap: .2em;
-width: 0% !important;
-margin-left: -.8em;
+justify-content: start;
+gap: .4em;
+margin-left: 0em;
 align-items: center;
 }
 
 .review_Cntnr img {
 width: 25px;
-margin-left: .6em;
 }
 
 .thumbnail {

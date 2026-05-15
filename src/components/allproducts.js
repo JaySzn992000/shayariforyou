@@ -8,7 +8,7 @@ import { addToCart } from "../action/action";
 import axios from "axios";
 import Header from "../headers_footer/header";
 
-const Allproducts = ({ addToCart}) => {
+const Allproducts = ({ addToCart, filter}) => {
 
 const [filteredProducts, setFilteredProducts] = useState([]);
 const [allProducts, setAllProducts] = useState([]);
@@ -60,34 +60,69 @@ console.error("Error fetching data:", error);
 });
 }, [] );
 
-
 const location = useLocation();
 const query = new URLSearchParams(location.search).get("search");
+
 useEffect(() => {
+
 if (query) {
+
 axios
 .get("https://omega-zg6z.onrender.com/fetchProductslist", {
 params: { search: query },
 })
 .then((response) => {
+
 setAllProducts(response.data);
-setFilteredProducts(response.data);
+
 })
 .catch((error) => {
 console.error("Error fetching products:", error);
 });
+
 } else {
+
 axios
 .get("https://omega-zg6z.onrender.com/fetchProductslist")
 .then((response) => {
+
 setAllProducts(response.data);
-setFilteredProducts(response.data);
+
 })
 .catch((error) => {
 console.error("Error fetching all products:", error);
 });
+
 }
+
 }, [query] );
+
+useEffect(() => {
+
+if (!allProducts.length) return;
+
+let updatedProducts = [...allProducts];
+
+if (filter?.selectedNames?.length > 0) {
+
+updatedProducts = updatedProducts.filter((product) =>
+filter.selectedNames.includes(product.category)
+);
+
+}
+
+const min = filter?.minPrice ?? 0;
+const max = filter?.maxPrice ?? 100000;
+
+updatedProducts = updatedProducts.filter(
+(product) =>
+Number(product.price) >= min &&
+Number(product.price) <= max
+);
+
+setFilteredProducts(updatedProducts);
+
+}, [filter, allProducts]);
 
 const sendToWishlist = (product) => {
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -99,7 +134,6 @@ wishlist.push(product);
 wishlist.splice(productIndex, 1);
 }
 
-
 localStorage.setItem("wishlist", JSON.stringify(wishlist));
 window.dispatchEvent(new Event("storage"));
 
@@ -107,9 +141,6 @@ setWishlistStatus({
 ...wishlistStatus,
 [product.id]: !wishlistStatus[product.id],
 } );
-
-// Update 
-// wishlist count
 
 setWishlistCount(wishlist.length);
 
@@ -124,9 +155,6 @@ JSON.stringify(updatedWishlistStatus)
 setWishlistStatus(updatedWishlistStatus);
 };
 
-const handleFilterUpdate = (filtered) => {
-setFilteredProducts(filtered);
-};
 
 const slugify = (text) => {
 return text

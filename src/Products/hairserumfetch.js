@@ -10,7 +10,7 @@ import Header from "../headers_footer/header";
 import { addToCart } from "../action/action";
 import FAqQuestions from "../components/FAqQuestions";
 
-const Hairserumfetch = ({ showFilters = true, limit, addToCart }) => {
+const Hairserumfetch = ({ showFilters = true, limit, addToCart, filter }) => {
 
 const [allProducts, setAllProducts] = useState([]); 
 const [filteredProducts, setFilteredProducts] = useState([]);
@@ -40,23 +40,52 @@ axios
 params: { search: query },
 })
 .then((response) => {
-console.log("Fetched search results:", response.data); 
-setAllProducts(response.data); 
-setFilteredProducts(
-limit ? response.data.slice(0, limit) : response.data
-);
+setAllProducts(response.data);
+setFilteredProducts(response.data);
 })
 .catch((error) => {
-console.error("Error fetching products with search query:", error);
+console.error("Error fetching products:", error);
 });
 } else {
-setFilteredProducts(allProducts); 
+axios
+.get("https://omega-zg6z.onrender.com/fetchhairserum")
+.then((response) => {
+setAllProducts(response.data);
+setFilteredProducts(response.data);
+})
+.catch((error) => {
+console.error("Error fetching all products:", error);
+});
 }
-}, [query, allProducts]);
+}, [query] );
 
-const handleFilterUpdate = (filteredData) => {
-setFilteredProducts(filteredData);
-};
+useEffect(() => {
+
+if (!allProducts.length) return;
+
+let updatedProducts = [...allProducts];
+
+if (filter?.selectedNames?.length > 0) {
+
+updatedProducts = updatedProducts.filter((product) =>
+filter.selectedNames.includes(product.category)
+);
+
+}
+
+const min = filter?.minPrice ?? 0;
+const max = filter?.maxPrice ?? 100000;
+
+updatedProducts = updatedProducts.filter(
+(product) =>
+Number(product.price) >= min &&
+Number(product.price) <= max
+);
+
+setFilteredProducts(updatedProducts);
+
+}, [filter, allProducts]);
+
 
 const limitedProducts = filteredProducts.slice(0, limit);
 

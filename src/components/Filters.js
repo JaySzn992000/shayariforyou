@@ -19,30 +19,14 @@ const location = useLocation();
 const query = new URLSearchParams(location.search).get("search");
 
 useEffect(() => {
-let filtered = allProducts;
 
-if (selectedNames.length > 0) {
-filtered = filtered.filter((product) =>
-selectedNames.includes(product.img)
-);
-
-}
-
-if (isPriceChanged) {
-filtered = filtered.filter(
-(product) => product.price >= minPrice && product.price <= maxPrice
-);
-}
-
-onFilterUpdate(filtered);
-
-}, [
+onFilterUpdate({
+selectedNames,
 minPrice,
 maxPrice,
-isPriceChanged,
-selectedNames,
-allProducts,
-]);
+});
+
+}, [selectedNames, minPrice, maxPrice]);
 
 const handlePriceChange = () => setIsPriceChanged(true);
 
@@ -62,6 +46,7 @@ newNames.length > 0
 navigate(`${newQuery}`);
 
 return newNames;
+
 });
 
 };
@@ -82,7 +67,8 @@ loading="lazy"
 onClick={ClickFilter}
 className="filter_"
 src="https://cdn-icons-png.flaticon.com/128/7094/7094575.png"
-alt=""></img>
+alt="">
+</img>
 
 </div>
 

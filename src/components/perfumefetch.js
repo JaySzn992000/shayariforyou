@@ -11,9 +11,8 @@ import Banner from "../Slider/Banner1.jpg"
 import "./ProductListmodule.css";
 import Header from "../headers_footer/header";
 
-const Perfumefetch = ({ addToCart}) => {
+const Perfumefetch = ({ addToCart, filter}) => {
 
-// fetchperfume
 
 const [filteredProducts, setFilteredProducts] = useState([]);
 const [allProducts, setAllProducts] = useState([]);
@@ -27,7 +26,7 @@ const [products, setProducts] = useState([]);
 useEffect(() => {
 
 axios
-.get("https://omega-zg6z.onrender.com/fetchproductslist")
+.get("https://omega-zg6z.onrender.com/fetchperfume")
 .then((res) => setProducts(res.data))
 .catch((err) => console.error(err));
 }, [] );
@@ -50,14 +49,13 @@ alert("Product added to cart!");
 }
 };
 
-
 useEffect(() => {
 const storedWishlistStatus =
 JSON.parse(localStorage.getItem("wishlistStatus")) || {};
 setWishlistStatus(storedWishlistStatus);
 
 axios
-.get("https://omega-zg6z.onrender.com/fetchproductslist")
+.get("https://omega-zg6z.onrender.com/fetchperfume")
 .then((response) => {
 setArrayStore(response.data);
 setFilteredProducts(response.data);
@@ -71,10 +69,11 @@ console.error("Error fetching data:", error);
 
 const location = useLocation();
 const query = new URLSearchParams(location.search).get("search");
+
 useEffect(() => {
 if (query) {
 axios
-.get("https://omega-zg6z.onrender.com/fetchproductslist", {
+.get("https://omega-zg6z.onrender.com/fetchperfume", {
 params: { search: query },
 })
 .then((response) => {
@@ -86,7 +85,7 @@ console.error("Error fetching products:", error);
 });
 } else {
 axios
-.get("https://omega-zg6z.onrender.com/fetchproductslist")
+.get("https://omega-zg6z.onrender.com/fetchperfume")
 .then((response) => {
 setAllProducts(response.data);
 setFilteredProducts(response.data);
@@ -96,7 +95,6 @@ console.error("Error fetching all products:", error);
 });
 }
 }, [query] );
-
 
 const sendToWishlist = (product) => {
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
