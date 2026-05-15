@@ -1242,33 +1242,34 @@ return res
 
 
 app.post("/resetpassword", async (req, res) => {
-  const { email, newPassword } = req.body;
+const { email, newPassword } = req.body;
 
-  if (!email || !newPassword) {
-    return res.status(400).json({ message: "Missing fields" });
-  }
+if (!email || !newPassword) {
+return res.status(400).json({ message: "Missing fields" });
+}
 
-  try {
-    const checkUser = await pool.query(
-      "SELECT * FROM _registeration WHERE email = $1",
-      [email]
-    );
+try {
+const checkUser = await pool.query(
+"SELECT * FROM _registeration WHERE email = $1",
+[email]
+);
 
-    if (checkUser.rows.length === 0) {
-      return res.status(404).json({ message: "User not found" });
-    }
+if (checkUser.rows.length === 0) {
+return res.status(404).json({ message: "User not found" });
+}
 
-    await pool.query(
-      "UPDATE _registeration SET password = $1 WHERE email = $2",
-      [newPassword, email]
-    );
+await pool.query(
+"UPDATE _registeration SET password = $1 WHERE email = $2",
+[newPassword, email]
+);
 
-    return res.json({ message: "Password updated successfully" });
+return res.json({ message: "Password updated successfully" });
 
-  } catch (err) {
-    console.error("RESET ERROR:", err.message);
-    return res.status(500).json({ message: "Server error" });
-  }
+} catch (err) {
+console.error("RESET ERROR:", err.message);
+return res.status(500).json({ message: "Server error" });
+}
+
 });
 
 
