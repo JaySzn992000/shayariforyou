@@ -61,11 +61,14 @@ console.error("Error fetching data:", error);
 }, [] );
 
 const location = useLocation();
-const query = new URLSearchParams(location.search).get("search");
+
+const queryParams = new URLSearchParams(location.search);
+
+const query = queryParams.get("search")?.trim() || "";
 
 useEffect(() => {
 
-if (query) {
+if (query === "") return;
 
 axios
 .get("https://omega-zg6z.onrender.com/fetchProductslist", {
@@ -80,22 +83,7 @@ setAllProducts(response.data);
 console.error("Error fetching products:", error);
 });
 
-} else {
-
-axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist")
-.then((response) => {
-
-setAllProducts(response.data);
-
-})
-.catch((error) => {
-console.error("Error fetching all products:", error);
-});
-
-}
-
-}, [query] );
+}, [query]);
 
 useEffect(() => {
 

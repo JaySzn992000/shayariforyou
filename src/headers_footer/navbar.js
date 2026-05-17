@@ -216,7 +216,10 @@ const [searchQuery, setSearchQuery] = useState("");
 
 const handleKeyDown = (e) => {
 if (e.key === "Enter") {
-navigate(`/collections?search=${encodeURIComponent(searchQuery)}`);
+navigate(`/collections?search=${encodeURIComponent(searchQuery.trim())}`, {
+replace: false,
+state: { searchTriggered: true }
+});
 }
 };
 
