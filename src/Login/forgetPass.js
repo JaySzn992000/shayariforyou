@@ -88,7 +88,6 @@ const password = formdata.password;
 const retypePassword = formdata.retypePassword;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
-
 if (!password.trim()) {
 setMessage("Please enter your password.");
 return;

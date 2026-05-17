@@ -125,7 +125,6 @@ style={{ width: "90%" }} />
 {[
 "Face Wash",
 "Face Cream",
-"Fruit Cake",
 "Sunscreen",
 "Shampoo",
 "Hair Serum",
