@@ -118,7 +118,7 @@ return;
 setIsProcessing(true);
 
 try {
-const response = await axios.post("https://naturalbuti.onrender.com/create-order", {
+const response = await axios.post("https://omega-zg6z.onrender.com/create-order", {
 amount: totalAmount,
 });
 
@@ -138,7 +138,7 @@ return;
 }
 
 const paymentVerificationResponse = await axios.post(
-"https://naturalbuti.onrender.com/verify-payment",
+"https://omega-zg6z.onrender.com/verify-payment",
 response
 );
 
@@ -169,7 +169,7 @@ payment_status: "Sucessfull",
 console.log("🚀 dataToSend to backend:", JSON.stringify(dataToSend, null, 2));
 
 await axios.post(
-"https://naturalbuti.onrender.com/addcartaddress",
+"https://omega-zg6z.onrender.com/addcartaddress",
 dataToSend
 );
 resetForm();
