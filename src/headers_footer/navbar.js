@@ -52,11 +52,6 @@ localStorage.setItem("loggedInUser", JSON.stringify(user));
 }
 }, [location.state] );
 
-useEffect(() => {
-const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-setWishlistCount(storedWishlist.length);
-}, [location] );
-
 const navigateEcart = () => {
 navigate("/Ecart");
 };
@@ -227,20 +222,18 @@ navigate(`/collections?search=${encodeURIComponent(searchQuery)}`);
 
 const [wishlistCount, setWishlistCount] = useState(0);
 
-useEffect(() => {
-
 const updateWishlistCount = () => {
-const storedWishlist =
-JSON.parse(localStorage.getItem("wishlist")) || [];
-
+const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 setWishlistCount(storedWishlist.length);
 };
 
+useEffect(() => {
 updateWishlistCount();
-
+window.addEventListener("storage", updateWishlistCount);
 window.addEventListener("wishlistUpdated", updateWishlistCount);
 
 return () => {
+window.removeEventListener("storage", updateWishlistCount);
 window.removeEventListener("wishlistUpdated", updateWishlistCount);
 };
 
