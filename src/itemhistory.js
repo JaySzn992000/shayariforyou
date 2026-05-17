@@ -10,7 +10,6 @@ const [loggedInUser, setLoggedInUser] = useState(null);
 const location = useLocation();
 const [quantities, setQuantities] = useState([]);
 
-
 useEffect(() => {
 const storedUser = localStorage.getItem("loggedInUser");
 if (storedUser) {

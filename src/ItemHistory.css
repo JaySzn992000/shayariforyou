@@ -1,12 +1,8 @@
-/* DOne */
-
-
 
 .custorders-headerItem {
 text-align: start;
 font-size: 1rem;
 }
-
 
 .Parent_relativeCustItem {
 width: 90%;
@@ -19,7 +15,6 @@ width: 95%;
 margin: 5.7em auto 0 auto;
 }
 
-
 .relative_CustordersItem {
 overflow-x: auto;
 width: 100%;
@@ -29,12 +24,10 @@ width: 100%;
 height: 5px;
 }
 
-
 .relative_CustordersItem::-webkit-scrollbar-thumb {
 background-color: #ccc;
 border-radius: 10px;
 }
-
 
 .relative_CustordersItem::-webkit-scrollbar-track {
 background-color: #f1f1f1;
@@ -78,7 +71,6 @@ color: rgb(128, 128, 128);
 line-height: 2.1em;
 }
 
-
 .custorders-tableItem .OrderhistoryTd{
 color: rgb(65, 105, 225);
 }
@@ -86,7 +78,6 @@ color: rgb(65, 105, 225);
 .custorders-tableItem thead {
 background-color: #f5f4f4;
 }
-
 
 .name_tdItem{
 color: #000000;
@@ -98,3 +89,6 @@ word-break: break-all;
 white-space: normal;
 }
 
+.no_history {
+margin-bottom: 2.7em;
+}
