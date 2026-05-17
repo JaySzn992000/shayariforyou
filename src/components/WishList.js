@@ -23,7 +23,6 @@ setWishlist(newWishlist);
 
 localStorage.setItem("wishlist", JSON.stringify(newWishlist));
 
-window.dispatchEvent(new Event("storage"));
 window.dispatchEvent(new Event("wishlistUpdated"));
 };
 

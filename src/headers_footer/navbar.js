@@ -226,6 +226,7 @@ navigate(`/collections?search=${encodeURIComponent(searchQuery)}`);
 };
 
 const [wishlistCount, setWishlistCount] = useState(0);
+
 useEffect(() => {
 
 const updateWishlistCount = () => {
@@ -237,11 +238,9 @@ setWishlistCount(storedWishlist.length);
 
 updateWishlistCount();
 
-window.addEventListener("storage", updateWishlistCount);
 window.addEventListener("wishlistUpdated", updateWishlistCount);
 
 return () => {
-window.removeEventListener("storage", updateWishlistCount);
 window.removeEventListener("wishlistUpdated", updateWishlistCount);
 };
 
