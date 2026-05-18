@@ -13,7 +13,7 @@ const [isFlipping, setIsFlipping] = useState(false);
 useEffect(() => {
 
 axios
-.get("http://localhost:3001/fetchProductslist")
+.get("https://shayariforyou.onrender.com/fetchProductslist")
 .then((res) => {
 setProducts(res.data);
 })

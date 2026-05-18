@@ -15,7 +15,7 @@ const pool = require("./config");
 
 app.use(cors({
 origin: [
-'http://localhost:3000'
+'https://shayariforyou-puce.vercel.app'
 ],
 methods: ['GET', 'POST', 'PUT', 'DELETE'],
 credentials: true
