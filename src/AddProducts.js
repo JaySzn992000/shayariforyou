@@ -48,7 +48,7 @@ console.log(pair[0], ":", pair[1]);
 }
 
 try {
-const response = await fetch("https://omega-zg6z.onrender.com/api/add-product", {
+const response = await fetch("https://shayariforyou.onrender.com/api/add-product", {
 method: "POST",
 body: formData,
 });
