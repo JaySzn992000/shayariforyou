@@ -15,6 +15,7 @@ import "./navbar.css";
 
 const Navbar = () => {
 
+
 const [loggedInUser, setLoggedInUser] = useState(null);
 const navigate = useNavigate();
 const location = useLocation();
