@@ -1,257 +1,238 @@
 import { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
-import Navbar from "../headers_footer/navbar";
-import FAqQuestions from "./FAqQuestions";
-import Filters from "./Filters";
-import { connect } from "react-redux";
-import { addToCart } from "../action/action";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import Header from "../headers_footer/header";
+import "./ProductListmodule.css";
 
-const Allproducts = ({ addToCart, filter}) => {
+const Allproducts = () => {
 
-const [filteredProducts, setFilteredProducts] = useState([]);
-const [allProducts, setAllProducts] = useState([]);
-const [wishlistCount, setWishlistCount] = useState(0);
-const [wishlistStatus, setWishlistStatus] = useState({});
-const [cartCount, setCartCount] = useState(0);
-const [arrayStore, setArrayStore] = useState([]);
 const [products, setProducts] = useState([]);
+const [currentPage, setCurrentPage] = useState(0);
+const [bookOpened, setBookOpened] = useState(false);
+const [isFlipping, setIsFlipping] = useState(false);
 
 useEffect(() => {
 
 axios
-.get("/fetchProductslist")
-.then((res) => setProducts(res.data))
-.catch((err) => console.error(err));
+.get("http://localhost:3001/fetchProductslist")
+.then((res) => {
+setProducts(res.data);
+})
+.catch((err) => {
+console.log(err);
+});
+
 }, []);
 
-const handleAddToCart = (product) => {
-if (!product) return;
-const isProductInCart = JSON.parse(localStorage.getItem("cart"))?.some(
-(item) => item.id === product.id
-);
-if (isProductInCart) {
-alert("This product is already in your cart.");
-} else {
-addToCart(product);
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-cart.push(product);
-localStorage.setItem("cart", JSON.stringify(cart));
-localStorage.setItem(`cart-added-${product.id}`, JSON.stringify(true));
-alert("Product added to cart!");
+const nextPage = () => {
+if (!isFlipping && currentPage < products.length - 2) {
+setIsFlipping(true);
+setCurrentPage(prev => prev + 2);
+setTimeout(() => setIsFlipping(false), 600);
 }
 };
 
-// useEffect(() => {
-// const storedWishlistStatus =
-// JSON.parse(localStorage.getItem("wishlistStatus")) || {};
-// setWishlistStatus(storedWishlistStatus);
-
-// axios
-// .get("https://omega-zg6z.onrender.com/fetchProductslist")
-// .then((response) => {
-// setArrayStore(response.data);
-// setFilteredProducts(response.data);
-// }) 
-
-// .catch((error) => {
-// console.error("Error fetching data:", error);
-// });
-// }, [] );
-
-const location = useLocation();
-const query = new URLSearchParams(location.search).get("search");
+const prevPage = () => {
+if (!isFlipping && currentPage > 0) {
+setIsFlipping(true);
+setCurrentPage(prev => prev - 2);
+setTimeout(() => setIsFlipping(false), 600);
+}
+};
 
 useEffect(() => {
 
-if (query) {
+if (
+currentPage >= products.length - 2 &&
+products.length > 0 &&
+bookOpened
+) {
 
-axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist", {
-params: { search: query },
-})
-.then((response) => {
+setTimeout(() => {
 
-setAllProducts(response.data);
+setBookOpened(false);
+setCurrentPage(0);
 
-})
-.catch((error) => {
-console.error("Error fetching products:", error);
-});
-
-} else {
-
-axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist")
-.then((response) => {
-
-setAllProducts(response.data);
-
-})
-.catch((error) => {
-console.error("Error fetching all products:", error);
-});
+}, 1500);
 
 }
 
-}, [query] );
-
-useEffect(() => {
-
-if (!allProducts.length) return;
-
-let updatedProducts = [...allProducts];
-
-if (filter?.selectedNames?.length > 0) {
-
-updatedProducts = updatedProducts.filter((product) =>
-filter.selectedNames.some(
-(name) =>
-product.img?.toLowerCase().includes(name.toLowerCase())
-)
-);
-
-}
-
-const min = filter?.minPrice ?? 0;
-const max = filter?.maxPrice ?? 100000;
-
-updatedProducts = updatedProducts.filter(
-(product) =>
-Number(product.price) >= min &&
-Number(product.price) <= max
-);
-
-setFilteredProducts(updatedProducts);
-
-}, [filter, allProducts]);
-
-const sendToWishlist = (product) => {
-let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-const productIndex = wishlist.findIndex((item) => item.id === product.id);
-
-if (productIndex === -1) {
-wishlist.push(product);
-} else {
-wishlist.splice(productIndex, 1);
-}
-
-localStorage.setItem("wishlist", JSON.stringify(wishlist));
-window.dispatchEvent(new Event("storage"));
-
-setWishlistStatus({
-...wishlistStatus,
-[product.id]: !wishlistStatus[product.id],
-} );
-
-setWishlistCount(wishlist.length);
-
-const updatedWishlistStatus = {
-...wishlistStatus,
-[product.id]: !wishlistStatus[product.id],
-};
-localStorage.setItem(
-"wishlistStatus",
-JSON.stringify(updatedWishlistStatus)
-);
-setWishlistStatus(updatedWishlistStatus);
-};
-
+}, [currentPage, products, bookOpened]);
 
 const slugify = (text) => {
 return text
 .toLowerCase()
-.replace(/[^a-z0-9]+/g, '-')   
-.replace(/(^-|-$)/g, '');      
+.replace(/[^a-z0-9]+/g, '-')
+.replace(/(^-|-$)/g, '');
 };
 
+const openBook = () => {
+setBookOpened(true);
+setCurrentPage(0);
+};
 
 return (
 
-<div>
+<div className="flipbook_wrapper">
 
-{/* <Navbar wishlistCount={wishlistCount} cartCount={cartCount} /> */}
+<div className={`book ${bookOpened ? "opened_book" : ""}`}>
 
-{/* <Filters allProducts={allProducts} onFilterUpdate={handleFilterUpdate} /> */}
+{/* ================= LEFT SONG PAGE (ALWAYS VISIBLE WHEN OPEN) ================= */}
 
-<div id="sticky_products_height">
+<div className={`left_song_page ${bookOpened ? "show_left_page" : ""}`}>
 
-<div className="sticky-wrapper">
+<div className={`song_wrapper ${bookOpened ? "show_song_content" : ""}`}>
 
-<section>
-<div>
+<h1>Favourite Songs 🎵</h1>
 
-<div className="flex_productlist">
-{filteredProducts.map((productlist) => (
-<div key={productlist.id} className="produclist_divContainer">
-
-<i
-onClick={() => sendToWishlist(productlist)}
-className={`fa fa-heart fa-heart_products ${
-wishlistStatus[productlist.id] ? "wishlist-active" : ""
-}`}
+<a
+href="https://open.spotify.com/"
+target="_blank"
+rel="noreferrer"
 >
-{" "}
-</i>
+Perfect - Ed Sheeran
+</a>
 
-<Link to={`/products/${slugify(productlist.name)}/${productlist.id}`}>
+<a
+href="https://open.spotify.com/"
+target="_blank"
+rel="noreferrer"
+>
+Until I Found You - Stephen Sanchez
+</a>
+
+<a
+href="https://open.spotify.com/"
+target="_blank"
+rel="noreferrer"
+>
+Tum Se Hi - Mohit Chauhan
+</a>
+
+</div>
+
+</div>
+
+{/* ================= FRONT COVER ================= */}
+
+<div
+className={`front_book_cover ${bookOpened ? "open_cover" : ""}`}
+onClick={openBook} >
+
+<div className="cover_text">
+
+<h1>For You</h1>
+
+<p>Click To Open</p>
+
+</div>
+
+</div>
+
+{/* ================= BOOK CENTER ================= */}
+
+<div className="book_center"></div>
+
+{/* ================= PRODUCT PAGES (PAIRED PAGES) ================= */}
+
+{products.map((product, index) => {
+// Calculate which spread this page belongs to
+const pageSpread = Math.floor(index / 2);
+const isEvenIndex = index % 2 === 0;
+const isLeftPage = isEvenIndex;
+const isFlipped = pageSpread < currentPage / 2;
+const shouldShow = bookOpened && index < products.length;
+
+if (!shouldShow) return null;
+
+return (
+<div
+className={`page ${isFlipped ? "flipped" : ""}`}
+key={product.id}
+style={{
+zIndex: products.length - index,
+transform: isFlipped ? 'rotateY(-180deg)' : 'rotateY(0deg)',
+transition: 'transform 0.6s ease-in-out'
+}}
+>
+
+{/* LEFT SIDE OF THE PAGE (FRONT) */}
+<div className="page_side page_front">
+<div className="page_content">
+<div className="product_card">
+<Link
+to={`/products/${slugify(product.name)}/${product.id}`}
+>
 <img
-src={productlist.file_path}
-alt={productlist.name}
-loading="lazy"
+src={product.file_path}
+alt={product.name}
 />
 </Link>
-
-<div className="padding_contain">
-<div className="flex_inr">
-
-<Link to={`/products/${slugify(productlist.name)}/${productlist.id}`}>
-<li>{productlist.name}</li>
-</Link>
-
-<div className="price_div">
-<li className="fa fa-inr"></li>
-<li className="fa_Price">{productlist.price}
-</li>
+<div className="product_info">
+<p>{product.description}</p>
+</div>
+</div>
+<div className="page_number">
+{index + 1}
+</div>
+</div>
 </div>
 
-<div className="review_Center">
-
+{/* RIGHT SIDE OF THE PAGE (BACK) - SHOWS NEXT PRODUCT */}
+<div className="page_side page_back">
+<div className="page_content">
+{products[index + 1] && (
+<div className="product_card">
+<Link
+to={`/products/${slugify(products[index + 1].name)}/${products[index + 1].id}`}
+>
 <img
-id="Review_Img"
-src="https://cdn-icons-png.flaticon.com/128/15853/15853959.png"
+src={products[index + 1].file_path}
+alt={products[index + 1].name}
 />
-
-<li className="fa_Review">{productlist.review}</li>
-
+</Link>
+<div className="product_info">
+<p>{products[index + 1].description}</p>
+</div>
+</div>
+)}
+<div className="page_number">
+{index + 2}
+</div>
+</div>
 </div>
 
 </div>
+);
+})}
 
+{/* ================= BUTTONS ================= */}
+
+{bookOpened && products.length > 0 && currentPage < products.length && (
+
+<>
 <button
-className="add_crt"
-onClick={() => handleAddToCart(productlist)}
+className="flip_prev"
+onClick={prevPage}
+disabled={isFlipping || currentPage === 0}
+style={{ opacity: currentPage === 0 ? 0.5 : 1 }}
 >
-<span>ADD TO CART</span>
+❮
 </button>
 
-</div>
+<button
+className="flip_next"
+onClick={nextPage}
+disabled={isFlipping || currentPage >= products.length - 2}
+style={{ opacity: currentPage >= products.length - 2 ? 0.5 : 1 }}
+>
+❯
+</button>
+
+</>
+
+)}
 
 </div>
-))}
-</div>
-
-</div>
-</section>
-
-</div>
-
-</div>
-
-<FAqQuestions></FAqQuestions>
-
-{/* <Header></Header> */}
 
 </div>
 
@@ -259,4 +240,4 @@ onClick={() => handleAddToCart(productlist)}
 
 };
 
-export default connect(null, { addToCart })(Allproducts);
+export default Allproducts;

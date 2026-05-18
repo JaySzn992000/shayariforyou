@@ -70,6 +70,7 @@ import Shampoo from "./Products/shampoo";
 import HairSerum from "./Products/hair-serum";
 import Haircolor from "./Products/hair-color";
 import VideoSlider from "./components/videoslider";
+import Allproducts from "./components/allproducts";
 
 
 function App () {
@@ -86,6 +87,7 @@ return (
 <Routes>
 <Route path="/Login" element={<Login />} />
 <Route path="/collections" element={<Collections />} />
+<Route path="/allproducts" element={<Allproducts />} />
 <Route path="/VideoSlider" element={<videoSlider />} />
 <Route path="/hair-care" element={<Haircare />} />
 <Route path="/skincare" element={<Skincare />} />
