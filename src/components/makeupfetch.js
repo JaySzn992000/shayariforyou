@@ -94,6 +94,37 @@ console.error("Error fetching all products:", error);
 }
 }, [query] );
 
+
+useEffect(() => {
+
+if (!allProducts.length) return;
+
+let updatedProducts = [...allProducts];
+
+if (filter?.selectedNames?.length > 0) {
+
+updatedProducts = updatedProducts.filter((product) =>
+filter.selectedNames.some(
+(name) =>
+product.img?.toLowerCase().includes(name.toLowerCase())
+)
+);
+
+}
+
+const min = filter?.minPrice ?? 0;
+const max = filter?.maxPrice ?? 100000;
+
+updatedProducts = updatedProducts.filter(
+(product) =>
+Number(product.price) >= min &&
+Number(product.price) <= max
+);
+
+setFilteredProducts(updatedProducts);
+
+}, [filter, allProducts]);
+
 const sendToWishlist = (product) => {
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const productIndex = wishlist.findIndex((item) => item.id === product.id);
