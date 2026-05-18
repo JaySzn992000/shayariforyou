@@ -15,7 +15,6 @@ import "./navbar.css";
 
 const Navbar = () => {
 
-
 const [loggedInUser, setLoggedInUser] = useState(null);
 const navigate = useNavigate();
 const location = useLocation();
@@ -216,10 +215,7 @@ const [searchQuery, setSearchQuery] = useState("");
 
 const handleKeyDown = (e) => {
 if (e.key === "Enter") {
-navigate(`/collections?search=${encodeURIComponent(searchQuery.trim())}`, {
-replace: false,
-state: { searchTriggered: true }
-});
+navigate(`/collections?search=${encodeURIComponent(searchQuery)}`);
 }
 };
 

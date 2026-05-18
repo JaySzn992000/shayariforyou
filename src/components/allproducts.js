@@ -43,32 +43,29 @@ alert("Product added to cart!");
 }
 };
 
-useEffect(() => {
-const storedWishlistStatus =
-JSON.parse(localStorage.getItem("wishlistStatus")) || {};
-setWishlistStatus(storedWishlistStatus);
+// useEffect(() => {
+// const storedWishlistStatus =
+// JSON.parse(localStorage.getItem("wishlistStatus")) || {};
+// setWishlistStatus(storedWishlistStatus);
 
-axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist")
-.then((response) => {
-setArrayStore(response.data);
-setFilteredProducts(response.data);
-}) 
+// axios
+// .get("https://omega-zg6z.onrender.com/fetchProductslist")
+// .then((response) => {
+// setArrayStore(response.data);
+// setFilteredProducts(response.data);
+// }) 
 
-.catch((error) => {
-console.error("Error fetching data:", error);
-});
-}, [] );
+// .catch((error) => {
+// console.error("Error fetching data:", error);
+// });
+// }, [] );
 
 const location = useLocation();
-
-const queryParams = new URLSearchParams(location.search);
-
-const query = queryParams.get("search")?.trim() || "";
+const query = new URLSearchParams(location.search).get("search");
 
 useEffect(() => {
 
-if (query === "") return;
+if (query) {
 
 axios
 .get("https://omega-zg6z.onrender.com/fetchProductslist", {
@@ -83,7 +80,22 @@ setAllProducts(response.data);
 console.error("Error fetching products:", error);
 });
 
-}, [query]);
+} else {
+
+axios
+.get("https://omega-zg6z.onrender.com/fetchProductslist")
+.then((response) => {
+
+setAllProducts(response.data);
+
+})
+.catch((error) => {
+console.error("Error fetching all products:", error);
+});
+
+}
+
+}, [query] );
 
 useEffect(() => {
 
