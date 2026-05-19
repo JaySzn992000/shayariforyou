@@ -49,9 +49,9 @@ return;
 
 try {
 
-// https://omega-zg6z.onrender.com/fetchAdmin
+// https://shayariforyou.onrender.com/fetchAdmin
 
-const response = await fetch("https://omega-zg6z.onrender.com/fetchAdmin", {
+const response = await fetch("https://shayariforyou.onrender.com/fetchAdmin", {
 method: "POST",
 headers: { "Content-Type": "application/json" },
 body: JSON.stringify({
