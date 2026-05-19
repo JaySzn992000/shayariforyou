@@ -33,7 +33,7 @@ spotifyUrl: "https://open.spotify.com/"
 
 useEffect(() => {
 axios
-.get("https://shayariforyou-puce.vercel.app/fetchProductslist")
+.get("https://shayariforyou.onrender.com/fetchProductslist")
 .then((res) => {
 setProducts(res.data);
 })
@@ -194,8 +194,8 @@ transition: 'transform 0.6s ease-in-out'
 to={`/products/${slugify(product.name)}/${product.id}`}
 >
 <img
-src={product.file_path}
-alt={product.name}
+    src={product.file_path}
+    alt={product.name}
 />
 </Link>
 <div className="product_info">
@@ -213,15 +213,15 @@ alt={product.name}
 {products[index + 1] && (
 <div className="product_card">
 <Link
-to={`/products/${slugify(products[index + 1].name)}/${products[index + 1].id}`}
+    to={`/products/${slugify(products[index + 1].name)}/${products[index + 1].id}`}
 >
-<img
-src={products[index + 1].file_path}
-alt={products[index + 1].name}
-/>
+    <img
+    src={products[index + 1].file_path}
+    alt={products[index + 1].name}
+    />
 </Link>
 <div className="product_info">
-<p>{products[index + 1].description}</p>
+    <p>{products[index + 1].description}</p>
 </div>
 </div>
 )}
