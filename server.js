@@ -1983,7 +1983,7 @@ console.log(`Server is running PORT on ${PORT}`);
 
 setInterval(() => {
   axios
-    .get("https://omega-zg6z.onrender.com/ping")
+    .get("https://shayariforyou.onrender.com/ping")
     .then(() => {
       console.log("Pinged self to stay awake");
     })
