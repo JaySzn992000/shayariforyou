@@ -102,34 +102,34 @@ dashboard_containerCon ? "dashboard-containerConinside" : ""
 
 className="addProduct_form">
 
-<div className="Flx_IconPrct">
+{/* <div className="Flx_IconPrct">
 <img  className="IconUpdatePrdct"
 src="https://cdn-icons-png.flaticon.com/128/5444/5444684.png"></img>
 <h3 id="addTag">Add Inventory</h3>
-</div>
+</div> */}
 
 <section>
 
 <section className="flex_section">
 <div className="addProductDiv">
-<label>Category Name</label>
+<label>Shayari Name</label>
 <input
 type="text"
 value={productCategory}
 onChange={(e) => setProductCategory(e.target.value)}
 required
-placeholder="Category Name"
+placeholder="Shayari"
 maxLength={30} />
 </div>
 
 <div className="addProductDiv">
-<label>Sizes</label>
+<label>Shayari</label>
 <input
 type="text"
 value={productSizes}
 onChange={(e) => setProductSizes(e.target.value)}
 required
-placeholder="Product Sizes" />
+placeholder="Shayari" />
 </div>
 </section>
 
@@ -137,18 +137,18 @@ placeholder="Product Sizes" />
 
 <section className="flex_section">
 <div className="addProductDiv">
-<label>Product Name:</label>
+<label>Shayari</label>
 <input
 type="text"
 value={productName}
 onChange={(e) => setProductName(e.target.value)}
 required
-placeholder="Product Name"
+placeholder="Shayari"
 maxLength={50} />
 </div>
 
 <div className="addProductDiv">
-<label>Price</label>
+<label>Shayari</label>
 <input
 type="number"
 value={productPrice}
@@ -158,7 +158,7 @@ setProductPrice(e.target.value);
 }
 }}
 required
-placeholder="Price" />
+placeholder="Shayari" />
 </div>
 </section>
 
@@ -166,12 +166,12 @@ placeholder="Price" />
 
 <section className="flex_section">
 <div className="addProductDiv">
-<label>Stock</label>
+<label>Shayari</label>
 <input
 type="number"
 value={productStock}
 required
-placeholder="Stock"
+placeholder="Shayari"
 onChange={(e) => {
 if (e.target.value.length <= 4) {
 setProductStock(e.target.value);
@@ -180,13 +180,13 @@ setProductStock(e.target.value);
 </div>
 
 <div className="addProductDiv">
-<label>Review</label>
+<label>Shayari</label>
 <input
 type="text"
 value={RateProducts}
 onChange={(e) => setRateProducts(e.target.value)}
 required
-placeholder="Rate Product"
+placeholder="Shayari"
 maxLength={10} />
 </div>
 </section>
@@ -194,14 +194,14 @@ maxLength={10} />
 {/* 4th section */}
 
 <section>
-<label>Description</label>
+<label>Shayari</label>
 <textarea
 className="textArea_Add"
 type="text"
 value={productDescription}
 onChange={(e) => setProductDescription(e.target.value)}
 required
-placeholder="Description"
+placeholder="Shayari"
 maxLength={1500} />
 </section>
 
@@ -238,7 +238,7 @@ required
 id="file-upload-three" />
 
 <button className="btn_product" type="submit">
-Add Product
+Add Shayari
 </button>
 
 </section>

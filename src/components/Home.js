@@ -15,6 +15,7 @@ import ShopCategory from "./ShopCategory";
 import Featured from "./Featured";
 import FavFavroute from "./FavFavroute";
 import VideoSlider from "./videoslider";
+import Allproducts from "./allproducts";
 // import BottomFavcomp from "../componentsBoot/bottomFavcomp";
 // import SlidCakeImg from "../Slider/CakeSlide.jpg";
 // import VideoSliderComponent from "../videoslider";
@@ -88,42 +89,7 @@ return (
 
 <div>
 
-<Topnav></Topnav>
-
-<Navbar />
-
-<Slider />
-
-<Iconicselection></Iconicselection>
-
-<VideoSlider></VideoSlider>
-
-<div className="tshirt_Left">
-<Pickles showFilters={showFilters} limit={10}></Pickles>
-</div>
-
-<button onClick={seeAllProducts} className="seeLLProducts">View All</button>
-
-<AboutHm></AboutHm>
-<Commitments></Commitments>
-<ShopCategory></ShopCategory>
-<FavFavroute></FavFavroute>
-<Featured></Featured>
-
-<div className="subscribe_k">
-
-<form onSubmit={sendEmail}>
-
-{successMessage && (
-<p className="success_message">{successMessage}</p>
-
-)}
-
-</form>
-
-</div>
-
-<Header />
+<Allproducts></Allproducts>
 
 </div>
 

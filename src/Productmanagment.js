@@ -57,26 +57,14 @@ return (
 
 <div>
 
-<DashboardNav toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen}
-navContainer={navContainer}
-></DashboardNav>
-<DashboardSlider sidebarOpen={sidebarOpen} />
-
-
 <AddProducts
 Product_relativeCon={Product_relativeCon}
 dashboard_containerCon={dashboard_containerCon}
 />
 
-
-<UpdateProduct Update_relativeCon={Update_relativeCon} 
-update_containerCon={update_containerCon}
-></UpdateProduct>
-
 <Deleteproduct Delete_relativeCon={Delete_relativeCon}
 Delete_formCon={Delete_formCon}
 ></Deleteproduct>
-
 
 </div>
 
