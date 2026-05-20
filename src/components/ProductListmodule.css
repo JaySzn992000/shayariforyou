@@ -405,7 +405,6 @@ box-shadow: 0 25px 55px rgba(27, 13, 22, 0.15);
 .product_card img {
 width: 285px;
 height: 285px;
-border: 1px solid black;
 margin: 25px auto 0 auto;
 object-fit: contain;
 display: block;
