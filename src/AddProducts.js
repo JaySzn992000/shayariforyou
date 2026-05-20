@@ -195,6 +195,7 @@ maxLength={10} />
 
 <section>
 <label>Shayari</label>
+
 <textarea
 className="textArea_Add"
 type="text"
@@ -202,7 +203,7 @@ value={productDescription}
 onChange={(e) => setProductDescription(e.target.value)}
 required
 placeholder="Shayari"
-maxLength={1500} />
+maxLength={350} />
 </section>
 
 <input

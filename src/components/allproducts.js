@@ -11,7 +11,6 @@ const [isFlipping, setIsFlipping] = useState(false);
 const [currentSong, setCurrentSong] = useState(null);
 const audioRef = useRef(null);
 
-
 const songs = [
 {
 name: "Unwell | Matchbox Twenty (RNB).Mp3",
@@ -41,7 +40,6 @@ console.log(err);
 });
 }, []);
 
-
 useEffect(() => {
 return () => {
 if (audioRef.current) {
@@ -49,7 +47,6 @@ audioRef.current.pause();
 }
 };
 }, []);
-
 
 useEffect(() => {
 if (currentSong && audioRef.current) {
@@ -77,26 +74,6 @@ setTimeout(() => setIsFlipping(false), 600);
 }
 };
 
-// useEffect(() => {
-// if (
-// currentPage >= products.length - 2 &&
-// products.length > 0 &&
-// bookOpened
-// ) {
-// setTimeout(() => {
-// setBookOpened(false);
-// setCurrentPage(0);
-// }, 1500);
-// }
-// }, [currentPage, products, bookOpened]);
-
-const slugify = (text) => {
-return text
-.toLowerCase()
-.replace(/[^a-z0-9]+/g, '-')
-.replace(/(^-|-$)/g, '');
-};
-
 const openBook = () => {
 setBookOpened(true);
 setCurrentPage(0);
@@ -108,25 +85,19 @@ setCurrentSong(song);
 };
 
 return (
-
 <div className="flipbook_wrapper">
-
 <audio ref={audioRef} />
 
 <div className={`book ${bookOpened ? "opened_book" : ""}`}>
 
+{/* Left/Song Page */}
+
 <div className={`left_song_page ${bookOpened ? "show_left_page" : ""}`}>
 <div className={`song_wrapper ${bookOpened ? "show_song_content" : ""}`}>
 <h1>Favourite Songs 🎵</h1>
-
 {songs.map((song, idx) => (
 <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-<a
-href={song.spotifyUrl}
-target="_blank"
-rel="noreferrer"
-style={{ flex: 1 }}
->
+<a href={song.spotifyUrl} target="_blank" rel="noreferrer" style={{ flex: 1 }}>
 {song.name}
 </a>
 <button
@@ -145,7 +116,6 @@ fontSize: '12px'
 </button>
 </div>
 ))}
-
 {currentSong && (
 <div style={{ marginTop: '15px', fontSize: '14px', color: '#fff' }}>
 Now Playing : {currentSong.name}
@@ -154,82 +124,81 @@ Now Playing : {currentSong.name}
 </div>
 </div>
 
-<div
-className={`front_book_cover ${bookOpened ? "open_cover" : ""}`}
-onClick={openBook} >
+{/* Front Cover */}
+
+<div className={`front_book_cover ${bookOpened ? "open_cover" : ""}`} onClick={openBook}>
 <div className="cover_text">
-<h1>For You</h1>
+<h1>Shayari for You
+A Book</h1>
 <p>Click To Open</p>
 </div>
 </div>
 
 <div className="book_center"></div>
 
+{/* Dynamic Pages */}
+
 {products
 .filter((_, index) => index % 2 === 0)
 .map((product, mapIndex) => {
-
 const index = mapIndex * 2;
+const isFlipped = index < currentPage;
+const shouldShow = bookOpened;
 
-const pageSpread = Math.floor(index / 2);
-const isEvenIndex = index % 2 === 0;
-const isLeftPage = isEvenIndex;
-const isFlipped = pageSpread < currentPage / 2;
-const shouldShow = bookOpened && index < products.length;
+// CRITICAL FIX: Flipped aur Non-flipped pages ki alalag z-index layer honi chahiye
+
+const dynamicZIndex = isFlipped 
+? index + 1                       // Flipped pages neeche se upar stack hongi (1, 3, 5...)
+: products.length - index;        // Non-flipped pages upar se neeche stack hongi
 
 if (!shouldShow) return null;
 
 return (
 <div
 className={`page ${isFlipped ? "flipped" : ""}`}
-key={product.id}
+key={product.id || index}
 style={{
-zIndex: products.length - index,
-transform: isFlipped ? 'rotateY(-180deg)' : 'rotateY(0deg)',
-transition: 'transform 0.6s ease-in-out'
+zIndex: dynamicZIndex,
+transform: isFlipped ? 'rotateY(-180deg)' : 'rotateY(0deg)'
 }}
 >
+
+{/* Front Side of Page (Right side originally, flips to left) */}
 
 <div className="page_side page_front">
 <div className="page_content">
 <div className="product_card">
-<img
-src={product.file_path}
-alt={product.name}
-/>
+<img src={product.file_path} alt={product.name} />
 <div className="product_info">
 <p>{product.description}</p>
 </div>
 </div>
-<div className="page_number">
-{index + 1}
+<div className="page_number">{index + 1}</div>
 </div>
 </div>
-</div>
+
+{/* Back Side of Page (Becomes visible on left after flip) */}
 
 <div className="page_side page_back">
 <div className="page_content">
 {products[index + 1] && (
 <div className="product_card">
-<img
-src={products[index + 1].file_path}
-alt={products[index + 1].name}
-/>
+<img src={products[index + 1].file_path} alt={products[index + 1].name} />
 <div className="product_info">
-    <p>{products[index + 1].description}</p>
+<p>{products[index + 1].description}</p>
 </div>
 </div>
 )}
-<div className="page_number">
-{index + 2}
-</div>
+<div className="page_number">{index + 2}</div>
 </div>
 </div>
 </div>
 );
 })}
 
-{bookOpened && products.length > 0 && currentPage < products.length && (
+{/* Navigation Buttons */}
+
+{bookOpened && products.length > 0 && (
 <>
 <button
 className="flip_prev"
@@ -251,7 +220,9 @@ style={{ opacity: currentPage >= products.length - 2 ? 0.5 : 1 }}
 </>
 )}
 </div>
+
 </div>
+
 );
 };
 
