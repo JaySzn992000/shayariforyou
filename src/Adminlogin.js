@@ -68,7 +68,7 @@ if (data.success) {
 setIsLoggedIn(true);
 localStorage.setItem("isLoggedIn", "true");
 localStorage.setItem("loggedInAdmin", JSON.stringify(formdata));
-navigate("/DashboardcomXKPbcadafcddcfadacbPKXproductlistsearchdashboard");
+navigate("/productmanagment");
 } else {
 alert(data.message || "Invalid username or password.");
 }
