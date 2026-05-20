@@ -77,18 +77,18 @@ setTimeout(() => setIsFlipping(false), 600);
 }
 };
 
-useEffect(() => {
-if (
-currentPage >= products.length - 2 &&
-products.length > 0 &&
-bookOpened
-) {
-setTimeout(() => {
-setBookOpened(false);
-setCurrentPage(0);
-}, 1500);
-}
-}, [currentPage, products, bookOpened]);
+// useEffect(() => {
+// if (
+// currentPage >= products.length - 2 &&
+// products.length > 0 &&
+// bookOpened
+// ) {
+// setTimeout(() => {
+// setBookOpened(false);
+// setCurrentPage(0);
+// }, 1500);
+// }
+// }, [currentPage, products, bookOpened]);
 
 const slugify = (text) => {
 return text
