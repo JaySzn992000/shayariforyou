@@ -60,12 +60,12 @@ return (
 
 <div>
 
-<DashboardNav
+{/* <DashboardNav
 toggleSidebar={toggleSidebar}
 sidebarOpen={sidebarOpen}
 navContainer={navContainer} />
 
-<DashboardSlider sidebarOpen={sidebarOpen} />
+<DashboardSlider sidebarOpen={sidebarOpen} /> */}
 
 <div className={`RelativeDB_product ${relativeClass ? "RelativeDB_PRQuery-inside" : ""}`}>
 <div className={`DB_products_ ${productClass ? "DB_products_PRQuery-inside" : ""}`}>
