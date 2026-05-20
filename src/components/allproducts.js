@@ -18,7 +18,7 @@ file: "song.mp3",
 spotifyUrl: "https://open.spotify.com/"
 },
 {
-name: "Sherpaa Roy Spider-Man.Mp3",
+name: "Sherpaa Roy with no Gwen.Mp3",
 file: "songtwo.mp3",
 spotifyUrl: "https://open.spotify.com/"
 },
