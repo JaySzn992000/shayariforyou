@@ -165,7 +165,12 @@ onClick={openBook} >
 
 <div className="book_center"></div>
 
-{products.map((product, index) => {
+{products
+.filter((_, index) => index % 2 === 0)
+.map((product, mapIndex) => {
+
+const index = mapIndex * 2;
+
 const pageSpread = Math.floor(index / 2);
 const isEvenIndex = index % 2 === 0;
 const isLeftPage = isEvenIndex;
