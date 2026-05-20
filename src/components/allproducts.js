@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import "./ProductListmodule.css";
 
@@ -15,18 +14,18 @@ const audioRef = useRef(null);
 
 const songs = [
 {
-name: "Unwell | Late Night PH (Cover)",
+name: "Unwell | Matchbox Twenty (RNB).Mp3",
 file: "song.mp3",
 spotifyUrl: "https://open.spotify.com/"
 },
 {
-name: "Until I Found You - Stephen Sanchez",
-file: "song.mp3",
+name: "Sherpaa Roy Spider-Man.Mp3",
+file: "songtwo.mp3",
 spotifyUrl: "https://open.spotify.com/"
 },
 {
-name: "Tum Se Hi - Mohit Chauhan",
-file: "song.mp3",
+name: "Unwell | Late Night PH (Cover).Mp3",
+file: "songthree.mp3",
 spotifyUrl: "https://open.spotify.com/"
 }
 ];
@@ -157,8 +156,7 @@ Now Playing : {currentSong.name}
 
 <div
 className={`front_book_cover ${bookOpened ? "open_cover" : ""}`}
-onClick={openBook}
->
+onClick={openBook} >
 <div className="cover_text">
 <h1>For You</h1>
 <p>Click To Open</p>
@@ -190,14 +188,10 @@ transition: 'transform 0.6s ease-in-out'
 <div className="page_side page_front">
 <div className="page_content">
 <div className="product_card">
-<Link
-to={`/products/${slugify(product.name)}/${product.id}`}
->
 <img
-    src={product.file_path}
-    alt={product.name}
+src={product.file_path}
+alt={product.name}
 />
-</Link>
 <div className="product_info">
 <p>{product.description}</p>
 </div>
@@ -212,14 +206,10 @@ to={`/products/${slugify(product.name)}/${product.id}`}
 <div className="page_content">
 {products[index + 1] && (
 <div className="product_card">
-<Link
-    to={`/products/${slugify(products[index + 1].name)}/${products[index + 1].id}`}
->
-    <img
-    src={products[index + 1].file_path}
-    alt={products[index + 1].name}
-    />
-</Link>
+<img
+src={products[index + 1].file_path}
+alt={products[index + 1].name}
+/>
 <div className="product_info">
     <p>{products[index + 1].description}</p>
 </div>
