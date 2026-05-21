@@ -980,7 +980,6 @@ res.status(500).json({ error: "Database query failed" });
 // });
 // });
 
-
 // from here
 
 // app.get("/fetchProductslist", (req, res) => {
