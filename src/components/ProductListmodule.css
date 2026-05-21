@@ -403,12 +403,12 @@ box-shadow: 0 25px 55px rgba(27, 13, 22, 0.15);
 }
 
 .product_card img {
+border-radius: 11px;
 width: 285px;
 height: 285px;
 margin: 25px auto 0 auto;
 object-fit: contain;
 display: block;
-border-radius: 11px;
 transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 

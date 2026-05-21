@@ -128,7 +128,7 @@ Now Playing : {currentSong.name}
 
 <div className={`front_book_cover ${bookOpened ? "open_cover" : ""}`} onClick={openBook}>
 <div className="cover_text">
-<h1>Shayari for You
+<h1>A Book Of Shayari
 A Book</h1>
 <p>Click To Open</p>
 </div>
