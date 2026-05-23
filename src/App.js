@@ -16,6 +16,8 @@ import AdminRegisteration from "./AdminRegisteration";
 import AdminUpdate from "./AdminUpdate";
 import Allproducts from "./components/allproducts";
 import Productmanagment from "./Productmanagment";
+import AddProducts from "./AddProducts";
+import Deleteproduct from "./Deleteproduct";
 
 
 function App () {
@@ -33,6 +35,8 @@ return (
 <Route path="/Login" element={<Login />} />
 <Route path="/allproducts" element={<Allproducts />} />
 <Route path="/Productmanagment" element={<Productmanagment />} />
+<Route path="/AddProducts" element={<AddProducts />} />
+<Route path="/Deleteproduct" element={<Deleteproduct />} />
 <Route path="/Registeration" element={<Registeration />} />
 <Route path="/Adminlogin" element={<Adminlogin setIsLoggedIn={setIsLoggedIn} />} />
 <Route path="/Profile" element={<Profile />} />
