@@ -2,8 +2,6 @@ import React from "react";
 import AddProducts from "./AddProducts";
 import UpdateProduct from "./UpdateProduct";
 import Deleteproduct from "./Deleteproduct";
-import DashboardNav from "./DashboardNav";
-import DashboardSlider from "./DashboardSlider";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 

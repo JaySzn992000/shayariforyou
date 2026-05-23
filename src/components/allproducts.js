@@ -196,7 +196,7 @@ String(idx + 1).padStart(2, '0')
 <div className="back_cover_content">
 <h2>The End</h2>
 <div className="cover_insignia">✨</div>
-<p>Click to Close Book</p>
+{/* <p>Click to Close Book</p> */}
 </div>
 </div>
 </BookPage>
