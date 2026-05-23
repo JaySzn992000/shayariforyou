@@ -15,6 +15,7 @@ import AdminForget from "./AdminForget";
 import AdminRegisteration from "./AdminRegisteration";
 import AdminUpdate from "./AdminUpdate";
 import Allproducts from "./components/allproducts";
+import Productmanagment from "./Productmanagment";
 
 
 function App () {
@@ -31,6 +32,7 @@ return (
 <Routes>
 <Route path="/Login" element={<Login />} />
 <Route path="/allproducts" element={<Allproducts />} />
+<Route path="/Productmanagment" element={<Productmanagment />} />
 <Route path="/Registeration" element={<Registeration />} />
 <Route path="/Adminlogin" element={<Adminlogin setIsLoggedIn={setIsLoggedIn} />} />
 <Route path="/Profile" element={<Profile />} />
