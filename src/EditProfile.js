@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./headers_footer/navbar";
-import Header from "./headers_footer/header";
 import { useLocation } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; 
 import "./Editform.css";
@@ -124,7 +122,6 @@ return (
 
 <div>
   
-<Navbar></Navbar>
 
 <form onSubmit={handleSubmitUpdate} className="Frm_edit">
 
@@ -203,9 +200,6 @@ onChange={handleInputChange}
 
 </form>
 
-<div className="header-ad">
-<Header></Header>
-</div>
 
 </div>
 

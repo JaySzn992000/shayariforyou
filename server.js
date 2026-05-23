@@ -41,7 +41,7 @@ res.send("✅ Backend is Live & Working");
 
 
 app.get("/ping", (req, res) => {
-  res.status(200).send("Server is alive!");
+res.status(200).send("Server is alive!");
 });
 
 
@@ -88,23 +88,23 @@ res.status(500).send("Database error");
 //
 
 
-app.post("/postqty", async (req, res) => {
-const { price, name, img } = req.body;
+// app.post("/postqty", async (req, res) => {
+// const { price, name, img } = req.body;
 
-const insertQuery = `
-INSERT INTO _ecart (price, name, img)
-VALUES ($1, $2, $3)
-`;
+// const insertQuery = `
+// INSERT INTO _ecart (price, name, img)
+// VALUES ($1, $2, $3)
+// `;
 
-try {
-await pool.query(insertQuery, [price, name, img]);
-console.log("Total successfully");
-res.status(200).json({ message: "Total successfully" });
-} catch (err) {
-console.error("Error fetched:", err.message);
-res.status(500).json({ message: "Error fetched", error: err.message });
-}
-});
+// try {
+// await pool.query(insertQuery, [price, name, img]);
+// console.log("Total successfully");
+// res.status(200).json({ message: "Total successfully" });
+// } catch (err) {
+// console.error("Error fetched:", err.message);
+// res.status(500).json({ message: "Error fetched", error: err.message });
+// }
+// });
 
 
 // app.post("/postqty", (req, res) => {
@@ -124,23 +124,23 @@ res.status(500).json({ message: "Error fetched", error: err.message });
 
 //
 
-app.post("/postqty", async (req, res) => {
-const { price, name, img } = req.body;
+// app.post("/postqty", async (req, res) => {
+// const { price, name, img } = req.body;
 
-const insertQuery = `
-INSERT INTO _ecart (price, name, img)
-VALUES ($1, $2, $3)
-`;
+// const insertQuery = `
+// INSERT INTO _ecart (price, name, img)
+// VALUES ($1, $2, $3)
+// `;
 
-try {
-await pool.query(insertQuery, [price, name, img]);
-console.log("Total successfully");
-res.status(200).json({ message: "Total successfully" });
-} catch (err) {
-console.error("Error fetched:", err.message);
-res.status(500).json({ message: "Error fetched", error: err.message });
-}
-});
+// try {
+// await pool.query(insertQuery, [price, name, img]);
+// console.log("Total successfully");
+// res.status(200).json({ message: "Total successfully" });
+// } catch (err) {
+// console.error("Error fetched:", err.message);
+// res.status(500).json({ message: "Error fetched", error: err.message });
+// }
+// });
 
 
 // app.post("/registerationPost", (req, res) => {
@@ -280,18 +280,18 @@ message: "System error. Please try later.",
 // });
 // });
 
-app.get("/fetchCartGet", async (req, res) => {
-const fetchQuery = "SELECT * FROM _ecart";
+// app.get("/fetchCartGet", async (req, res) => {
+// const fetchQuery = "SELECT * FROM _ecart";
 
-try {
-const result = await pool.query(fetchQuery);
-console.log(result.rows); // .rows needed in PostgreSQL
-res.status(200).json(result.rows);
-} catch (err) {
-console.error("Error fetched:", err.message);
-res.status(500).json({ message: "Error fetched", error: err.message });
-}
-});
+// try {
+// const result = await pool.query(fetchQuery);
+// console.log(result.rows); // .rows needed in PostgreSQL
+// res.status(200).json(result.rows);
+// } catch (err) {
+// console.error("Error fetched:", err.message);
+// res.status(500).json({ message: "Error fetched", error: err.message });
+// }
+// });
 
 
 // ProductList
@@ -337,346 +337,6 @@ app.use(express.static(path.join(__dirname, "public")));
 // });
 
 
-app.get("/fetchbathbody", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%bath body%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetchstreax", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%streax%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetchbiotique", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%biotique%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetchskincare", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%skincare%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-app.get("/fetchhaircolor", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%hair color%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetcharoma", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%aroma%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetchshampoo", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%shampoo%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetchskincare", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%skin care%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetchmakeup", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%makeup%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetchperfume", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%perfume%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetchhaircare", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%hair care%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetchLotus", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%lotus%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetchhairserum", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%hair serum%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetchlorealparis", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%loreal paris%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-app.get("/fetchsunscreen", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%sunscreen%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-app.get("/fetchfacecream", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%face cream%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetcho3plus", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%o3 plus%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-});
-
-
-app.get("/fetchFacewash", async (req, res) => {
-
-const query = `
-SELECT *
-FROM _imgproduct
-WHERE img ILIKE '%face wash%'
-`;
-
-try {
-const result = await pool.query(query);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-
-})
-
-
-
 // app.get("/fetchProductslistJeans", (req, res) => {
 // const exactMatchQuery = `
 // SELECT *
@@ -693,23 +353,6 @@ res.status(500).json({ error: "Database query failed" });
 // res.json(results);
 // });
 // });
-
-
-app.get("/fetchProductslistJeans", async (req, res) => {
-const exactMatchQuery = `
-SELECT *
-FROM _imgproduct
-WHERE LOWER(img) = LOWER($1)
-`;
-
-try {
-const result = await pool.query(exactMatchQuery, ['Jeans']);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-});
 
 
 // app.get("/fetchProductslistShirt", (req, res) => {
@@ -717,257 +360,6 @@ res.status(500).json({ error: "Database query failed" });
 // SELECT *
 // FROM imgproduct
 // WHERE LOWER(img) = LOWER('Carrot')`;
-
-// // Execute the query
-// db.query(exactMatchQuery, (err, results) => {
-// if (err) {
-// console.error("Error fetching data:", err.stack);
-// return res.status(500).json({ error: "Database query failed" });
-// }
-
-// res.json(results);
-// });
-// });
-
-
-
-app.get("/fetchProductslistShirt", async (req, res) => {
-const exactMatchQuery = `
-SELECT *
-FROM _imgproduct
-WHERE LOWER(img) = LOWER($1)
-`;
-
-try {
-const result = await pool.query(exactMatchQuery, ['BananaPowder']);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-});
-
-
-// app.get("/fetchProductslistJeans", (req, res) => {
-// const exactMatchQuery = `
-// SELECT *
-// FROM imgproduct
-// WHERE LOWER(img) = LOWER('Jeans')`;
-
-// // Execute the query
-
-// db.query(exactMatchQuery, (err, results) => {
-// if (err) {
-// console.error("Error fetching data:", err.stack);
-// return res.status(500).json({ error: "Database query failed" });
-// }
-
-// res.json(results);
-// });
-// });
-
-
-app.get("/fetchProductslistJeans", async (req, res) => {
-const exactMatchQuery = `
-SELECT *
-FROM _imgproduct
-WHERE LOWER(img) = LOWER($1)
-`;
-
-try {
-const result = await pool.query(exactMatchQuery, ['Jeans']);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-});
-
-
-// app.get("/fetchProductslistPants", (req, res) => {
-// const exactMatchQuery = `
-// SELECT *
-// FROM imgproduct
-// WHERE LOWER(img) = LOWER('Lemon')`;
-
-// // Execute the query
-
-// db.query(exactMatchQuery, (err, results) => {
-// if (err) {
-// console.error("Error fetching data:", err.stack);
-// return res.status(500).json({ error: "Database query failed" });
-// }
-
-// res.json(results);
-// });
-// });
-
-
-app.get("/fetchProductslistPants", async (req, res) => {
-const exactMatchQuery = `
-SELECT *
-FROM _imgproduct
-WHERE LOWER(img) = LOWER($1)
-`;
-
-try {
-const result = await pool.query(exactMatchQuery, ['LicoricePowder']);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-});
-
-
-
-// app.get("/fetchProductslistSweatshirt", (req, res) => {
-// const exactMatchQuery = `
-// SELECT *
-// FROM imgproduct
-// WHERE LOWER(img) = LOWER('Bitter')`;
-
-// // Execute the query
-// db.query(exactMatchQuery, (err, results) => {
-// if (err) {
-// console.error("Error fetching data:", err.stack);
-// return res.status(500).json({ error: "Database query failed" });
-// }
-
-// res.json(results);
-// });
-// });
-
-
-app.get("/fetchProductslistSweatshirt", async (req, res) => {
-const exactMatchQuery = `
-SELECT *
-FROM _imgproduct
-WHERE LOWER(img) = LOWER($1)
-`;
-
-try {
-const result = await pool.query(exactMatchQuery, ['HairGrowth']);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-});
-
-
-// app.get("/fetchProductslistShorts", (req, res) => {
-// const exactMatchQuery = `
-// SELECT *
-// FROM imgproduct
-// WHERE LOWER(img) = LOWER('Garlic')`;
-
-// // Execute the query
-// db.query(exactMatchQuery, (err, results) => {
-// if (err) {
-// console.error("Error fetching data:", err.stack);
-// return res.status(500).json({ error: "Database query failed" });
-// }
-
-// res.json(results);
-// });
-// });
-
-
-app.get("/fetchProductslistShorts", async (req, res) => {
-const exactMatchQuery = `
-SELECT *
-FROM _imgproduct
-WHERE LOWER(img) = LOWER($1)
-`;
-
-try {
-const result = await pool.query(exactMatchQuery, ['SandalwoodPowder']);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-});
-
-
-// app.get("/fetchProductslistTrouser", (req, res) => {
-// const exactMatchQuery = `
-// SELECT *
-// FROM imgproduct
-// WHERE LOWER(img) = LOWER('Ghee')`;
-
-// // Execute the query
-// db.query(exactMatchQuery, (err, results) => {
-// if (err) {
-// console.error("Error fetching data:", err.stack);
-// return res.status(500).json({ error: "Database query failed" });
-// }
-
-// res.json(results);
-// });
-// });
-
-
-app.get("/fetchProductslistTrouser", async (req, res) => {
-const exactMatchQuery = `
-SELECT *
-FROM _imgproduct
-WHERE LOWER(img) = LOWER($1)
-`;
-
-try {
-const result = await pool.query(exactMatchQuery, ['Ghee']);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-});
-
-
-// app.get("/fetchProductslistBlazers", (req, res) => {
-// const exactMatchQuery = `
-// SELECT *
-// FROM imgproduct
-// WHERE LOWER(img) = LOWER('Aavla')`;
-
-// // Execute the query
-// db.query(exactMatchQuery, (err, results) => {
-// if (err) {
-// console.error("Error fetching data:", err.stack);
-// return res.status(500).json({ error: "Database query failed" });
-// }
-
-// res.json(results);
-// });
-// });
-
-// ..
-
-
-app.get("/fetchProductslistBlazers", async (req, res) => {
-const exactMatchQuery = `
-SELECT *
-FROM _imgproduct
-WHERE LOWER(img) = LOWER($1)
-`;
-
-try {
-const result = await pool.query(exactMatchQuery, ['Aavla']);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-});
-
-
-// app.get("/fetchProductslistHoodies", (req, res) => {
-// const exactMatchQuery = `
-// SELECT *
-// FROM imgproduct
-// WHERE LOWER(img) = LOWER('Mixed')`;
 
 // // Execute the query
 // db.query(exactMatchQuery, (err, results) => {
@@ -1104,35 +496,6 @@ res.status(500).json({ error: "Database query failed" });
 // });
 
 //
-
-
-app.get("/fetchProductDetails", async (req, res) => {
-const fetchQuery = "SELECT * FROM _imgproduct";
-
-try {
-const result = await pool.query(fetchQuery);
-console.log(result.rows);
-res.status(200).json(result.rows);
-} catch (err) {
-console.error("Fetch error:", err.message);
-res.status(500).json({ message: "Fetch error", error: err.message });
-}
-});
-
-
-// app.post("/fetchlogin", (req, res) => {
-// const FetchQuery = "SELECT * FROM registeration";
-// db.query(FetchQuery, (err, result) => {
-// if (err) {
-// console.log("Error fetched");
-// res.status(500).json({ message: "Error fetched", error: err.message });
-// } else {
-// console.log(result);
-// res.status(200).json(result);
-// }
-// });
-// });
-
 
 
 app.post("/fetchlogin", async (req, res) => {
@@ -1400,18 +763,18 @@ res.status(500).json({ message: "Error adding items to cart", error: err.message
 //
 
 
-app.get("/fetchProductDetails", async (req, res) => {
-const fetchQuery = "SELECT * FROM _imgproduct";
+// app.get("/fetchProductDetails", async (req, res) => {
+// const fetchQuery = "SELECT * FROM _imgproduct";
 
-try {
-const result = await pool.query(fetchQuery);
-console.log(result.rows);
-res.status(200).json(result.rows);
-} catch (err) {
-console.error("Fetch error:", err.message);
-res.status(500).json({ message: "Fetch error", error: err.message });
-}
-});
+// try {
+// const result = await pool.query(fetchQuery);
+// console.log(result.rows);
+// res.status(200).json(result.rows);
+// } catch (err) {
+// console.error("Fetch error:", err.message);
+// res.status(500).json({ message: "Fetch error", error: err.message });
+// }
+// });
 
 
 // app.get("/fetchProductHistory", (req, res) => {
@@ -1427,21 +790,6 @@ res.status(500).json({ message: "Fetch error", error: err.message });
 // });
 // });
 
-app.get("/fetchProductHistory", async (req, res) => {
-const fetchQuery = "SELECT * FROM _carts";
-
-try {
-const result = await pool.query(fetchQuery);
-console.log(result.rows);
-res.status(200).json(result.rows);
-} catch (err) {
-console.error("Fetch error:", err.message);
-res.status(500).json({ message: "Fetch error", error: err.message });
-}
-});
-
-
-
 // app.get("/historyfetchcustomer", (req, res) => {
 // const historyItemscust = "SELECT * FROM custorder";
 // db.query(historyItemscust, (err, result) => {
@@ -1456,22 +804,6 @@ res.status(500).json({ message: "Fetch error", error: err.message });
 // });
 
 //
-
-
-app.get("/historyfetchcustomer", async (req, res) => {
-const fetchQuery = "SELECT * FROM _custorder";
-
-try {
-const result = await pool.query(fetchQuery);
-console.log(result.rows);
-res.status(200).json(result.rows);
-} catch (err) {
-console.error("Fetch error:", err.message);
-res.status(500).json({ message: "Fetch error", error: err.message });
-}
-});
-
-
 
 
 // app.post("/resetAdminPassword", (req, res) => {
@@ -1530,31 +862,31 @@ res.status(500).json({ message: "Fetch error", error: err.message });
 
 
 app.post("/resetAdminPassword", async (req, res) => {
-  const { adminuser, newPassword } = req.body;
+const { adminuser, newPassword } = req.body;
 
-  if (!adminuser || !newPassword) {
-    return res.status(400).json({ message: "Missing fields" });
-  }
+if (!adminuser || !newPassword) {
+return res.status(400).json({ message: "Missing fields" });
+}
 
-  try {
-    const checkUser = await pool.query(
-      "SELECT * FROM _admindashboard WHERE adminuser = $1",
-      [adminuser]
-    );
+try {
+const checkUser = await pool.query(
+"SELECT * FROM _admindashboard WHERE adminuser = $1",
+[adminuser]
+);
 
-    if (checkUser.rows.length === 0) {
-      return res.status(404).json({ message: "User not found" });
-    }
+if (checkUser.rows.length === 0) {
+return res.status(404).json({ message: "User not found" });
+}
 
-    await pool.query(
-      "UPDATE _admindashboard SET adminpass = $1 WHERE adminuser = $2",
-      [newPassword, adminuser]
-    );
+await pool.query(
+"UPDATE _admindashboard SET adminpass = $1 WHERE adminuser = $2",
+[newPassword, adminuser]
+);
 
-    res.json({ message: "Password updated successfully" });
-  } catch (err) {
-    res.status(500).json({ message: "Error updating password", error: err.message });
-  }
+res.json({ message: "Password updated successfully" });
+} catch (err) {
+res.status(500).json({ message: "Error updating password", error: err.message });
+}
 });
 
 
@@ -1677,35 +1009,35 @@ error: err.message,
 // });
 // });
 
-app.post("/fetchAdmin", async (req, res) => {
-const { adminuser, adminpass } = req.body;
+// app.post("/fetchAdmin", async (req, res) => {
+// const { adminuser, adminpass } = req.body;
 
-const loginQuery = `
-SELECT * FROM _admindashboard
-WHERE adminuser = $1 AND adminpass = $2
-`;
+// const loginQuery = `
+// SELECT * FROM _admindashboard
+// WHERE adminuser = $1 AND adminpass = $2
+// `;
 
-try {
-const result = await pool.query(loginQuery, [adminuser, adminpass]);
+// try {
+// const result = await pool.query(loginQuery, [adminuser, adminpass]);
 
-if (result.rows.length > 0) {
-// User found
-console.log("Login successful");
-return res.status(200).json({ success: true, message: "Login successful" });
-} else {
-// No match
-console.log("Invalid credentials");
-return res.status(401).json({ success: false, message: "Invalid credentials" });
-}
-} catch (err) {
-console.error("Error fetching user:", err.message);
-return res.status(500).json({
-success: false,
-message: "Error fetching data",
-error: err.message,
-});
-}
-});
+// if (result.rows.length > 0) {
+// // User found
+// console.log("Login successful");
+// return res.status(200).json({ success: true, message: "Login successful" });
+// } else {
+// // No match
+// console.log("Invalid credentials");
+// return res.status(401).json({ success: false, message: "Invalid credentials" });
+// }
+// } catch (err) {
+// console.error("Error fetching user:", err.message);
+// return res.status(500).json({
+// success: false,
+// message: "Error fetching data",
+// error: err.message,
+// });
+// }
+// });
 
 
 // app.post("/registerAdmin", (req, res) => {
@@ -1762,28 +1094,28 @@ error: err.message,
 
 
 app.post('/registerAdmin', async (req, res) => {
-  const { adminuser, adminpass } = req.body;
-    console.log("Received admin register:", adminuser, adminpass); // 👈 Debug log
+const { adminuser, adminpass } = req.body;
+console.log("Received admin register:", adminuser, adminpass); // 👈 Debug log
 
-  try {
-  const insertAdminQuery = `
-  INSERT INTO _admindashboard (adminuser, adminpass)
-  VALUES ($1, $2)
-  `;
-  await pool.query(insertAdminQuery, [adminuser, adminpass]); 
+try {
+const insertAdminQuery = `
+INSERT INTO _admindashboard (adminuser, adminpass)
+VALUES ($1, $2)
+`;
+await pool.query(insertAdminQuery, [adminuser, adminpass]); 
 
-    return res.status(200).json({
-      success: true,
-      message: "Admin registered successfully"
-    });
-  } catch (err) {
-    console.error("Error in /registerAdmin:", err);
-    return res.status(500).json({
-      success: false,
-      message: "Server error while registering admin"
-    });
-  }
-  
+return res.status(200).json({
+success: true,
+message: "Admin registered successfully"
+});
+} catch (err) {
+console.error("Error in /registerAdmin:", err);
+return res.status(500).json({
+success: false,
+message: "Server error while registering admin"
+});
+}
+
 });
 
 
@@ -1846,78 +1178,78 @@ app.post('/registerAdmin', async (req, res) => {
 // });
 
 
-app.post("/addcartaddress", async (req, res) => {
+// app.post("/addcartaddress", async (req, res) => {
 
-const { user, cartItems, addressDetails, paymentDetails } = req.body;
+// const { user, cartItems, addressDetails, paymentDetails } = req.body;
 
-if (
-!user ||
-!cartItems ||
-!cartItems.length ||
-!addressDetails ||
-!paymentDetails
-) {
-return res.status(400).json({ message: "Invalid data" });
-}
+// if (
+// !user ||
+// !cartItems ||
+// !cartItems.length ||
+// !addressDetails ||
+// !paymentDetails
+// ) {
+// return res.status(400).json({ message: "Invalid data" });
+// }
 
-try {
+// try {
 
-const client = await pool.connect();
+// const client = await pool.connect();
 
-const insertQuery = `
-INSERT INTO _custorder (
-name, mob, email, id, productname, price, quantity,
-gender, add_name, country, pincode, address, state,
-mobilenumber, alternativenumber, emailid,
-date, amount, payment_status,
-razorpay_order_id, razorpay_payment_id, file_path
-)
-VALUES (
-$1, $2, $3, $4, $5, $6, $7,
-$8, $9, $10, $11, $12, $13,
-$14, $15, $16,
-$17, $18, $19,
-$20, $21, $22
-)
-`;
+// const insertQuery = `
+// INSERT INTO _custorder (
+// name, mob, email, id, productname, price, quantity,
+// gender, add_name, country, pincode, address, state,
+// mobilenumber, alternativenumber, emailid,
+// date, amount, payment_status,
+// razorpay_order_id, razorpay_payment_id, file_path
+// )
+// VALUES (
+// $1, $2, $3, $4, $5, $6, $7,
+// $8, $9, $10, $11, $12, $13,
+// $14, $15, $16,
+// $17, $18, $19,
+// $20, $21, $22
+// )
+// `;
 
-for (const item of cartItems) {
-const values = [
-user.name,
-user.mob,
-user.email,
-item.id,
-item.productName,
-item.price,
-item.quantity || 1,
-addressDetails.gender,
-addressDetails.add_name,
-addressDetails.country,
-addressDetails.pincode,
-addressDetails.address,
-addressDetails.state,
-addressDetails.mobilenumber,
-addressDetails.alternativenumber,
-addressDetails.emailid,
-new Date(),
-paymentDetails.amount,
-paymentDetails.payment_status,
-paymentDetails.razorpay_order_id,
-paymentDetails.razorpay_payment_id,
-item.file_path,
-];
+// for (const item of cartItems) {
+// const values = [
+// user.name,
+// user.mob,
+// user.email,
+// item.id,
+// item.productName,
+// item.price,
+// item.quantity || 1,
+// addressDetails.gender,
+// addressDetails.add_name,
+// addressDetails.country,
+// addressDetails.pincode,
+// addressDetails.address,
+// addressDetails.state,
+// addressDetails.mobilenumber,
+// addressDetails.alternativenumber,
+// addressDetails.emailid,
+// new Date(),
+// paymentDetails.amount,
+// paymentDetails.payment_status,
+// paymentDetails.razorpay_order_id,
+// paymentDetails.razorpay_payment_id,
+// item.file_path,
+// ];
 
-await client.query(insertQuery, values);
-}
+// await client.query(insertQuery, values);
+// }
 
-client.release();
-res.status(200).json({ message: "Order successfully placed" });
-} catch (err) {
-console.error("Error occurred:", err);
-res.status(500).json({ message: "Error occurred", error: err.message });
-}
+// client.release();
+// res.status(200).json({ message: "Order successfully placed" });
+// } catch (err) {
+// console.error("Error occurred:", err);
+// res.status(500).json({ message: "Error occurred", error: err.message });
+// }
 
-});
+// });
 
 //
 
@@ -1981,14 +1313,14 @@ console.log(`Server is running PORT on ${PORT}`);
 
 
 setInterval(() => {
-  axios
-    .get("https://shayariforyou.onrender.com/ping")
-    .then(() => {
-      console.log("Pinged self to stay awake");
-    })
-    .catch((err) => {
-      console.error("Ping failed", err.message);
-    });
+axios
+.get("https://shayariforyou.onrender.com/ping")
+.then(() => {
+console.log("Pinged self to stay awake");
+})
+.catch((err) => {
+console.error("Ping failed", err.message);
+});
 }, 10 * 60 * 1000); 
 
 
@@ -2411,19 +1743,19 @@ res.status(500).json({ error: "Failed to delete product." });
 // });
 // });
 
-app.get("/fetchDB", async (req, res) => {
-const productQuery = "SELECT * FROM _imgproduct";
+// app.get("/fetchDB", async (req, res) => {
+// const productQuery = "SELECT * FROM _imgproduct";
 
-try {
-const result = await pool.query(productQuery);
-const totalProducts = result.rows.length;
+// try {
+// const result = await pool.query(productQuery);
+// const totalProducts = result.rows.length;
 
-res.status(200).json({ products: result.rows, total: totalProducts });
-} catch (err) {
-console.log("Fetch error:", err.message);
-res.status(500).json({ message: "Fetch error", error: err.message });
-}
-});
+// res.status(200).json({ products: result.rows, total: totalProducts });
+// } catch (err) {
+// console.log("Fetch error:", err.message);
+// res.status(500).json({ message: "Fetch error", error: err.message });
+// }
+// });
 
 // app.get("/adminusersDeatils", (req, res) => {
 // const productQuery = "SELECT * FROM admindashboard";
@@ -2439,19 +1771,19 @@ res.status(500).json({ message: "Fetch error", error: err.message });
 // });
 // });
 
-app.get("/adminusersDeatils", async (req, res) => {
-const productQuery = "SELECT * FROM _admindashboard";
+// app.get("/adminusersDeatils", async (req, res) => {
+// const productQuery = "SELECT * FROM _admindashboard";
 
-try {
-const result = await pool.query(productQuery);
-const totalProducts = result.rows.length;
+// try {
+// const result = await pool.query(productQuery);
+// const totalProducts = result.rows.length;
 
-res.status(200).json({ products: result.rows, total: totalProducts });
-} catch (err) {
-console.log("Fetch error:", err.message);
-res.status(500).json({ message: "Fetch error", error: err.message });
-}
-});
+// res.status(200).json({ products: result.rows, total: totalProducts });
+// } catch (err) {
+// console.log("Fetch error:", err.message);
+// res.status(500).json({ message: "Fetch error", error: err.message });
+// }
+// });
 
 
 // app.get("/usersDetails", (req, res) => {
@@ -2469,19 +1801,19 @@ res.status(500).json({ message: "Fetch error", error: err.message });
 // });
 
 
-app.get("/usersDetails", async (req, res) => {
-const productQuery = "SELECT * FROM _registeration";
+// app.get("/usersDetails", async (req, res) => {
+// const productQuery = "SELECT * FROM _registeration";
 
-try {
-const result = await pool.query(productQuery);
-const totalProducts = result.rows.length;
+// try {
+// const result = await pool.query(productQuery);
+// const totalProducts = result.rows.length;
 
-res.status(200).json({ products: result.rows, total: totalProducts });
-} catch (err) {
-console.log("Fetch error:", err.message);
-res.status(500).json({ message: "Fetch error", error: err.message });
-}
-});
+// res.status(200).json({ products: result.rows, total: totalProducts });
+// } catch (err) {
+// console.log("Fetch error:", err.message);
+// res.status(500).json({ message: "Fetch error", error: err.message });
+// }
+// });
 
 
 // app.get("/amdinprofile", (req, res) => {
@@ -2528,19 +1860,19 @@ res.status(200).json({ products: result, total: totalProducts });
 // });
 
 
-app.get("/fetchCutomerOrder", async (req, res) => {
-const productQuery = "SELECT * FROM _custorder";
+// app.get("/fetchCutomerOrder", async (req, res) => {
+// const productQuery = "SELECT * FROM _custorder";
 
-try {
-const result = await pool.query(productQuery);
-const totalProducts = result.rows.length;
+// try {
+// const result = await pool.query(productQuery);
+// const totalProducts = result.rows.length;
 
-res.status(200).json({ products: result.rows, total: totalProducts });
-} catch (err) {
-console.log("Fetch error:", err.message);
-res.status(500).json({ message: "Fetch error", error: err.message });
-}
-});
+// res.status(200).json({ products: result.rows, total: totalProducts });
+// } catch (err) {
+// console.log("Fetch error:", err.message);
+// res.status(500).json({ message: "Fetch error", error: err.message });
+// }
+// });
 
 
 // app.post("/fetchCutomerOrder", (req, res) => {
@@ -2612,31 +1944,31 @@ res.status(500).json({ message: "Fetch error", error: err.message });
 // });
 
 
-app.post("/updateOrderStatus", (req, res) => {
+// app.post("/updateOrderStatus", (req, res) => {
 
-const { razorpay_order_id } = req.body;
+// const { razorpay_order_id } = req.body;
 
-const updateQuery = `
-UPDATE _custorder 
-SET status_order = 'Order Delivered' 
-WHERE razorpay_order_id = ?
-`;
+// const updateQuery = `
+// UPDATE _custorder 
+// SET status_order = 'Order Delivered' 
+// WHERE razorpay_order_id = ?
+// `;
 
 
-db.query(updateQuery, [razorpay_order_id], (err, result) => {
-if (err) {
-console.log("Update error:", err);
-return res.status(500).json({ success: false, message: "DB error" });
-}
+// db.query(updateQuery, [razorpay_order_id], (err, result) => {
+// if (err) {
+// console.log("Update error:", err);
+// return res.status(500).json({ success: false, message: "DB error" });
+// }
 
-if (result.affectedRows === 0) {
-return res.status(404).json({ success: false, message: "Order not found" });
-}
+// if (result.affectedRows === 0) {
+// return res.status(404).json({ success: false, message: "Order not found" });
+// }
 
-res.status(200).json({ success: true, message: "Order status updated" });
+// res.status(200).json({ success: true, message: "Order status updated" });
 
-});
-});
+// });
+// });
 
 
 // app.get("/usertotalnofo", (req, res) => {
@@ -2654,15 +1986,15 @@ res.status(200).json({ success: true, message: "Order status updated" });
 // });
 
 
-app.get("/usertotalnofo", async (req, res) => {
-const productQuery = "SELECT * FROM _registeration";
+// app.get("/usertotalnofo", async (req, res) => {
+// const productQuery = "SELECT * FROM _registeration";
 
-try {
-const result = await pool.query(productQuery);
-const totalProducts = result.rowCount;
-res.status(200).json({ products: result.rows, total: totalProducts });
-} catch (err) {
-console.log("Fetch error:", err.message);
-res.status(500).json({ message: "Fetch error", error: err.message });
-}
-});
+// try {
+// const result = await pool.query(productQuery);
+// const totalProducts = result.rowCount;
+// res.status(200).json({ products: result.rows, total: totalProducts });
+// } catch (err) {
+// console.log("Fetch error:", err.message);
+// res.status(500).json({ message: "Fetch error", error: err.message });
+// }
+// });

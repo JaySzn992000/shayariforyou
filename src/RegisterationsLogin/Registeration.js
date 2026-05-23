@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import Navbar from "../headers_footer/navbar";
-import Header from "../headers_footer/header";
 import "./Registeration.css";
 
 const Registeration = () => {
@@ -124,7 +122,6 @@ return (
 
 <div>
 
-<Navbar></Navbar>
 
 <div className="flex_regis_Container">
 
@@ -200,8 +197,6 @@ Already have an account ? <span onClick={Signin}>Login</span>
 </form>
 
 </div>
-
-<Header></Header>
 
 </div>
 

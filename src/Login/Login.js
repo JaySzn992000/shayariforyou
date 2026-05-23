@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import Navbar from "../headers_footer/navbar";
-import Header from "../headers_footer/header";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; 
 import "./Login.css";
 
@@ -86,7 +84,6 @@ naviForgt("/ForgetPass");
 return (
 
 <div>
-<Navbar />
 
 <form onSubmit={loginHanlder} className="logged_formFlex" id="logged_form">
 
@@ -140,7 +137,6 @@ Forgot Password ?
 </div>
 )}
 
-<Header />
 </div>
 
 );

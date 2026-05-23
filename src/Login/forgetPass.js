@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Navbar from "../headers_footer/navbar";
-import Header from "../headers_footer/header";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./forgetPass.css";
 
@@ -150,8 +148,6 @@ return (
 
 <div>
 
-<Navbar />
-
 <form onSubmit={resetPasswordHandler} className="forget_flex"
 id="logged_form_Flex">
 
@@ -237,8 +233,6 @@ type="submit">Reset Password</button>
 <p>{message}</p>
 </div>
 )}
-
-<Header />
 
 </div>
 

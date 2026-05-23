@@ -1,32 +1,29 @@
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import HTMLFlipBook from "react-pageflip";
 import axios from "axios";
 import "./ProductListmodule.css";
 
-const Allproducts = () => {
+const BookPage = React.forwardRef(({ children, className, onClick }, ref) => {
 
+return (
+
+<div className={`demoPage ${className || ""}`} ref={ref} onClick={onClick}>
+{children}
+</div>
+);
+});
+
+const Allproducts = () => {
 const [products, setProducts] = useState([]);
-const [currentPage, setCurrentPage] = useState(0);
-const [bookOpened, setBookOpened] = useState(false);
-const [isFlipping, setIsFlipping] = useState(false);
 const [currentSong, setCurrentSong] = useState(null);
+const [isPlaying, setIsPlaying] = useState(false);
 const audioRef = useRef(null);
+const flipBookRef = useRef(null);
 
 const songs = [
-{
-name: "Unwell | Matchbox Twenty (RNB).Mp3",
-file: "song.mp3",
-spotifyUrl: "https://open.spotify.com/"
-},
-{
-name: "Sherpaa Roy with no Gwen.Mp3",
-file: "songtwo.mp3",
-spotifyUrl: "https://open.spotify.com/"
-},
-{
-name: "Unwell | Late Night PH (Cover).Mp3",
-file: "songthree.mp3",
-spotifyUrl: "https://open.spotify.com/"
-}
+{ name: "Unwell", artist: "Matchbox Twenty", file: "song.mp3", duration: "3:54" },
+{ name: "Sherpaa Roy", artist: "Classical Folk", file: "songtwo.mp3", duration: "4:12" },
+{ name: "Late Night PH", artist: "Lo-Fi Beats", file: "songthree.mp3", duration: "2:45" }
 ];
 
 useEffect(() => {
@@ -40,130 +37,145 @@ console.log(err);
 });
 }, []);
 
-useEffect(() => {
-return () => {
-if (audioRef.current) {
+const playSong = (song) => {
+if (currentSong?.name === song.name && isPlaying) {
 audioRef.current.pause();
-}
-};
-}, []);
-
-useEffect(() => {
-if (currentSong && audioRef.current) {
-audioRef.current.pause();
-audioRef.current.src = currentSong.file;
-audioRef.current.play().catch(error => {
-console.log("Auto-play prevented:", error);
-});
-}
-}, [currentSong]);
-
-const nextPage = () => {
-if (!isFlipping && currentPage < products.length - 2) {
-setIsFlipping(true);
-setCurrentPage(prev => prev + 2);
-setTimeout(() => setIsFlipping(false), 600);
-}
-};
-
-const prevPage = () => {
-if (!isFlipping && currentPage > 0) {
-setIsFlipping(true);
-setCurrentPage(prev => prev - 2);
-setTimeout(() => setIsFlipping(false), 600);
-}
-};
-
-const openBook = () => {
-setBookOpened(true);
-setCurrentPage(0);
-};
-
-const playSong = (song, e) => {
-e.preventDefault();
+setIsPlaying(false);
+} else {
 setCurrentSong(song);
+setIsPlaying(true);
+if (audioRef.current) {
+audioRef.current.src = song.file;
+audioRef.current.play().catch((err) => console.log("Playback engine delayed:", err));
+}
+}
+};
+
+const goNext = () => flipBookRef.current?.pageFlip()?.flipNext();
+const goPrev = () => flipBookRef.current?.pageFlip()?.flipPrev();
+
+const handleResetToCover = () => {
+if (flipBookRef.current) {
+flipBookRef.current.pageFlip().flip(0);
+}
 };
 
 return (
+
 <div className="flipbook_wrapper">
-<audio ref={audioRef} />
 
-<div className={`book ${bookOpened ? "opened_book" : ""}`}>
+<audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
 
-{/* Left/Song Page */}
+<button className="flip_prev" onClick={goPrev}>‹</button>
+<button className="flip_next" onClick={goNext}>›</button>
 
-<div className={`left_song_page ${bookOpened ? "show_left_page" : ""}`}>
-<div className={`song_wrapper ${bookOpened ? "show_song_content" : ""}`}>
-<h1>Favourite Songs 🎵</h1>
-{songs.map((song, idx) => (
-<div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-<a href={song.spotifyUrl} target="_blank" rel="noreferrer" style={{ flex: 1 }}>
-{song.name}
-</a>
-<button
-onClick={(e) => playSong(song, e)}
-style={{
-padding: '5px 10px',
-backgroundColor: currentSong?.name === song.name ? '#4CAF50' : '#007bff',
-color: 'white',
-border: 'none',
-borderRadius: '5px',
-cursor: 'pointer',
-fontSize: '12px'
-}}
+<div className="book_container_layout">
+
+{products.length > 0 && (
+<HTMLFlipBook
+width={490}
+height={670}
+size="stretch"
+minWidth={300}
+maxWidth={1000}
+minHeight={400}
+maxHeight={1533}
+maxShadowOpacity={0.4}
+showCover={true}
+mobileScrollSupport={true}
+className="flip-book"
+ref={flipBookRef}
 >
-{currentSong?.name === song.name ? 'Playing ▶' : 'Play'}
+
+<BookPage className="hard_page">
+<div className="front_book_cover">
+<video 
+className="cover_video_bg" 
+src="/video.mp4" 
+autoPlay 
+loop 
+muted 
+playsInline
+/>
+<div className="cover_text">
+<h1>A Book Of Shayari</h1>
+<p>Realistic Page Flip Book</p>
+</div>
+</div>
+</BookPage>
+
+<BookPage className="hard_page">
+
+<div className="left_song_page">
+
+<div className={`premium_music_glow ${isPlaying ? "glow_active" : ""}`}></div>
+
+<div className="premium_player_container">
+
+<div className="vinyl_deck_wrapper">
+<div className={`vinyl_disc ${isPlaying ? "vinyl_spinning" : ""}`}>
+<div className="vinyl_center_label">
+<div className="vinyl_center_hole"></div>
+</div>
+</div>
+<div className={`tonearm_needle ${isPlaying ? "needle_on_deck" : ""}`}></div>
+</div>
+
+<header className="player_header">
+<h2>Auditory Oasis</h2>
+<p>Curated Soundtracks for Reading</p>
+</header>
+
+<div className="premium_playlist">
+{songs.map((song, idx) => {
+const isCurrent = currentSong?.name === song.name;
+return (
+<div 
+key={idx} 
+className={`premium_track_row ${isCurrent ? "track_active" : ""}`}
+onClick={() => playSong(song)}
+>
+<div className="track_index">
+{isCurrent && isPlaying ? (
+<div className="playing_bars_wave">
+<span></span><span></span><span></span>
+</div>
+) : (
+String(idx + 1).padStart(2, '0')
+)}
+</div>
+
+<div className="track_details">
+<h3>{song.name}</h3>
+<p>{song.artist}</p>
+</div>
+
+<div className="track_meta">
+<span className="track_duration">{song.duration}</span>
+<button className="premium_audio_trigger">
+{isCurrent && isPlaying ? "⏸" : "▶"}
 </button>
 </div>
-))}
+</div>
+);
+})}
+</div>
+
 {currentSong && (
-<div style={{ marginTop: '15px', fontSize: '14px', color: '#fff' }}>
-Now Playing : {currentSong.name}
+<div className={`premium_now_playing_hud ${isPlaying ? "hud_visible" : ""}`}>
+<div className="hud_wave_icon">🎵</div>
+<div className="hud_text">
+<span className="hud_label">NOW RESONATING</span>
+<p className="hud_title">{currentSong.name} — {currentSong.artist}</p>
+</div>
 </div>
 )}
 </div>
 </div>
+</BookPage>
 
-{/* Front Cover */}
-
-<div className={`front_book_cover ${bookOpened ? "open_cover" : ""}`} onClick={openBook}>
-<div className="cover_text">
-<h1>A Book Of Shayari</h1>
-<p>Click To Open</p>
-</div>
-</div>
-
-<div className="book_center"></div>
-
-{/* Dynamic Pages */}
-
-{products
-.filter((_, index) => index % 2 === 0)
-.map((product, mapIndex) => {
-const index = mapIndex * 2;
-const isFlipped = index < currentPage;
-const shouldShow = bookOpened;
-
-// CRITICAL FIX: Flipped aur Non-flipped pages ki alalag z-index layer honi chahiye
-
-const dynamicZIndex = isFlipped 
-? index + 1                       // Flipped pages neeche se upar stack hongi (1, 3, 5...)
-: products.length - index;        // Non-flipped pages upar se neeche stack hongi
-
-if (!shouldShow) return null;
-
-return (
-<div
-className={`page ${isFlipped ? "flipped" : ""}`}
-key={product.id || index}
-style={{
-zIndex: dynamicZIndex,
-transform: isFlipped ? 'rotateY(-180deg)' : 'rotateY(0deg)'
-}}
->
-
-{/* Front Side of Page (Right side originally, flips to left) */}
-
+{products.map((product, index) => (
+<BookPage key={`prod-${product.id || index}`}>
 <div className="page_side page_front">
 <div className="page_content">
 <div className="product_card">
@@ -175,53 +187,23 @@ transform: isFlipped ? 'rotateY(-180deg)' : 'rotateY(0deg)'
 <div className="page_number">{index + 1}</div>
 </div>
 </div>
+</BookPage>
+))}
 
-{/* Back Side of Page (Becomes visible on left after flip) */}
 
-<div className="page_side page_back">
-<div className="page_content">
-{products[index + 1] && (
-<div className="product_card">
-<img src={products[index + 1].file_path} alt={products[index + 1].name} />
-<div className="product_info">
-<p>{products[index + 1].description}</p>
+<BookPage className="hard_page reset_trigger_cover" key="book-back-cover" onClick={handleResetToCover}>
+<div className="back_book_cover">
+<div className="back_cover_content">
+<h2>The End</h2>
+<div className="cover_insignia">✨</div>
+<p>Click to Close Book</p>
 </div>
 </div>
-)}
-<div className="page_number">{index + 2}</div>
-</div>
-</div>
-</div>
-);
-})}
-
-{/* Navigation Buttons */}
-
-{bookOpened && products.length > 0 && (
-<>
-<button
-className="flip_prev"
-onClick={prevPage}
-disabled={isFlipping || currentPage === 0}
-style={{ opacity: currentPage === 0 ? 0.5 : 1 }}
->
-❮
-</button>
-
-<button
-className="flip_next"
-onClick={nextPage}
-disabled={isFlipping || currentPage >= products.length - 2}
-style={{ opacity: currentPage >= products.length - 2 ? 0.5 : 1 }}
->
-❯
-</button>
-</>
+</BookPage>
+</HTMLFlipBook>
 )}
 </div>
-
 </div>
-
 );
 };
 

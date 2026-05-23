@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import DashboardSlider from "./DashboardSlider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import DashboardNav from "./DashboardNav";
 import { useNavigate } from "react-router";
 import "./AdminProfile.css"; 
 
@@ -59,13 +57,6 @@ navigate("/adminlogin");
 return (
 
 <div>
-
-{/* <DashboardNav
-toggleSidebar={toggleSidebar}
-sidebarOpen={sidebarOpen}
-navContainer={navContainer} />
-
-<DashboardSlider sidebarOpen={sidebarOpen} /> */}
 
 <div className={`RelativeDB_product ${relativeClass ? "RelativeDB_PRQuery-inside" : ""}`}>
 <div className={`DB_products_ ${productClass ? "DB_products_PRQuery-inside" : ""}`}>

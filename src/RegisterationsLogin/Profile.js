@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../headers_footer/navbar";
-import Header from "../headers_footer/header";
 import ProfileBG from "../Logo/ProfileBG.jpg";
 import "./Profile.css";
 
@@ -42,8 +40,6 @@ navigate("/WishList");
 return (
 
 <div>
-
-<Navbar/>
 
 <section className="flex_Profile_">
 
@@ -101,7 +97,6 @@ Wish List
 </div>
 </div>
 
-<Header></Header>
 
 </div>
 

@@ -49,8 +49,6 @@ return;
 
 try {
 
-// https://shayariforyou.onrender.com/fetchAdmin
-
 const response = await fetch("https://shayariforyou.onrender.com/fetchAdmin", {
 method: "POST",
 headers: { "Content-Type": "application/json" },
