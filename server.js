@@ -973,41 +973,40 @@ error: err.message,
 // Admin
 //  Registeration ...
 
+app.post("/fetchAdmin", (req, res) => {
+const { adminuser, adminpass } = req.body;
 
-// app.post("/fetchAdmin", (req, res) => {
-// const { adminuser, adminpass } = req.body;
+// SQL query to check
+// if the credentials match
+const insertQueryLogin =
+"SELECT * FROM admindashboard WHERE adminuser = ? AND adminpass = ?";
 
-// // SQL query to check
-// // if the credentials match
-// const insertQueryLogin =
-// "SELECT * FROM admindashboard WHERE adminuser = ? AND adminpass = ?";
+db.query(insertQueryLogin, [adminuser, adminpass], (err, result) => {
+if (err) {
+console.log("Error fetching user:", err);
+res
+.status(500)
+.json({
+success: false,
+message: "Error fetching data",
+error: err.message,
+});
+return;
+}
 
-// db.query(insertQueryLogin, [adminuser, adminpass], (err, result) => {
-// if (err) {
-// console.log("Error fetching user:", err);
-// res
-// .status(500)
-// .json({
-// success: false,
-// message: "Error fetching data",
-// error: err.message,
-// });
-// return;
-// }
-
-// if (result.length > 0) {
-// // User found,
-// // login successful
-// console.log("Login successful");
-// res.status(200).json({ success: true, message: "Login successful" });
-// } else {
-// // No user found with
-// //  the provided credentials
-// console.log("Invalid credentials");
-// res.status(401).json({ success: false, message: "Invalid credentials" });
-// }
-// });
-// });
+if (result.length > 0) {
+// User found,
+// login successful
+console.log("Login successful");
+res.status(200).json({ success: true, message: "Login successful" });
+} else {
+// No user found with
+//  the provided credentials
+console.log("Invalid credentials");
+res.status(401).json({ success: false, message: "Invalid credentials" });
+}
+});
+});
 
 app.post("/fetchAdmin", async (req, res) => {
 const { adminuser, adminpass } = req.body;
@@ -1309,7 +1308,6 @@ res.status(500).json({ message: "Database update error", error: err.message });
 app.listen(PORT, () => {
 console.log(`Server is running PORT on ${PORT}`);
 });
-
 
 
 setInterval(() => {
