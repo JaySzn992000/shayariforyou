@@ -22,9 +22,10 @@ const audioRef = useRef(null);
 const flipBookRef = useRef(null);
 
 const songs = [
+{ name: "Passenger Seat", artist: "R & B X Cover", file: "songfour.mp3", duration: "2:45" },
 { name: "Unwell", artist: "Matchbox Twenty", file: "song.mp3", duration: "3:54" },
 { name: "Sherpaa Roy", artist: "Classical Folk", file: "songtwo.mp3", duration: "4:12" },
-{ name: "Late Night PH", artist: "Lo-Fi Beats", file: "songthree.mp3", duration: "2:45" }
+{ name: "Late Night PH", artist: "Lo-Fi Beats", file: "songthree.mp3", duration: "2:45" },
 ];
 
 useEffect(() => {
@@ -165,7 +166,6 @@ String(idx + 1).padStart(2, '0')
 </div>
 );
 })}
-</div>
 
 {currentSong && (
 <div className={`premium_now_playing_hud ${isPlaying ? "hud_visible" : ""}`}>
@@ -176,6 +176,9 @@ String(idx + 1).padStart(2, '0')
 </div>
 </div>
 )}
+</div>
+
+
 </div>
 </div>
 </BookPage>
