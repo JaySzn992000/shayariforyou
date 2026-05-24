@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import axios from "axios";
 import "./ProductListmodule.css";
+import { useNavigate } from "react-router";
 
 const BookPage = React.forwardRef(({ children, className, onClick }, ref) => {
 
@@ -60,6 +61,11 @@ flipBookRef.current.pageFlip().flip(0);
 }
 };
 
+const navigate = useNavigate()
+const handleaddstory = () => {
+navigate('/productmanagment')
+}
+
 return (
 
 <div className="flipbook_wrapper">
@@ -95,11 +101,11 @@ src="/video.mp4"
 autoPlay 
 loop 
 muted 
-playsInline
-/>
+playsInline />
 <div className="cover_text">
-<h1>A Book Of Shayari</h1>
-<p>Realistic Page Flip Book</p>
+<h1>The Untold Tales</h1>
+<p>By Bhumi</p>
+<p>Touch to Read</p>
 </div>
 </div>
 </BookPage>
@@ -190,18 +196,32 @@ String(idx + 1).padStart(2, '0')
 </BookPage>
 ))}
 
-
-<BookPage className="hard_page reset_trigger_cover" key="book-back-cover" onClick={handleResetToCover}>
+<BookPage 
+className="hard_page reset_trigger_cover" 
+key="book-back-cover" 
+onClick={handleResetToCover}
+>
 <div className="back_book_cover">
 <div className="back_cover_content">
-<h2>The End</h2>
+<h2>Until the next Page</h2>
 <div className="cover_insignia">✨</div>
-{/* <p>Click to Close Book</p> */}
+
+<p
+onClick={(e) => {
+e.stopPropagation();
+handleaddstory();
+}}
+>
+Click to Add <br></br> Your Next Chapter
+</p>
+
 </div>
 </div>
 </BookPage>
+
 </HTMLFlipBook>
 )}
+
 </div>
 </div>
 );
