@@ -22,7 +22,7 @@ const data = await response.json();
 
 if (response.ok) {
 setMessage(data.message || "Product deleted successfully!");
-alert("Product deleted successfully!");
+alert("Shayari deleted successfully!");
 } else {
 setMessage(data.error || "Failed to delete product.");
 alert("Product deleted successfully!");

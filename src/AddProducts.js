@@ -54,7 +54,7 @@ body: formData,
 });
 
 if (response.ok) {
-alert("Product added successfully!");
+alert("Shayari added successfully!");
 
 setProductCategory("");
 setProductName("");

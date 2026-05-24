@@ -9,7 +9,6 @@ const fs = require("fs");
 const cloudinary = require("cloudinary").v2;
 const app = express(); 
 
-
 require("dotenv").config();
 const pool = require("./config");
 
