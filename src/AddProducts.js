@@ -137,7 +137,7 @@ placeholder="Shayari" />
 
 <section className="flex_section">
 <div className="addProductDiv">
-<label>Shayari</label>
+<label>Shayari Name</label>
 <input
 type="text"
 value={productName}

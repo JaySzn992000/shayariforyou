@@ -188,6 +188,7 @@ String(idx + 1).padStart(2, '0')
 <img src={product.file_path} alt={product.name} />
 <div className="product_info">
 <p>{product.description}</p>
+<p>{product.name}</p>
 </div>
 </div>
 <div className="page_number">{index + 1}</div>
