@@ -203,7 +203,7 @@ value={productDescription}
 onChange={(e) => setProductDescription(e.target.value)}
 required
 placeholder="Shayari"
-maxLength={350} />
+maxLength={1000} />
 </section>
 
 <input

@@ -423,7 +423,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // });
 
-
 // fetchProductslist PostGreSQL 
 
 app.get("/fetchProductslist", async (req, res) => {
